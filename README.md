@@ -1,21 +1,22 @@
-# Next.js template
+# CrewHub
 
-This is a Next.js template with shadcn/ui.
+This is a simple application that will allow small teams to:
 
-## Adding components
+- communicate
+- organise members into teams
+- schedule and manage events
+- track basic team activity
 
-To add components to your app, run the following command:
+## Tech Stack
 
-```bash
-npx shadcn@latest add button
-```
+- React
+- Next.js
+- TypeScript
 
-This will place the ui components in the `components` directory.
+## Requirements
 
-## Using components
+See the [requirements](./requirements.md) for more information about what this application contains, and what to expect.
 
-To use the components in your app, import them as follows:
+## Devlog
 
-```tsx
-import { Button } from "@/components/ui/button";
-```
+See the [devlog](./devlog.md) for the development history, which includes information such as what has been completed, any issues, and what are the next steps in development.
