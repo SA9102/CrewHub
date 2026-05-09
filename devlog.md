@@ -3,12 +3,14 @@
 #### What I worked on:
 
 - Project setup
+- Authentication
 
 #### What I completed:
 
 - Created project
 - Set up requirements
 - First push to GitHub
+- Added signup page
 
 ### Issues:
 
@@ -16,8 +18,8 @@ N/A
 
 #### What I learned:
 
-N/A
+- Using Auth.js to add credentials
 
 ### Next step:
 
-- Add models
+- Adding authentication
