@@ -1,16 +1,14 @@
-### Date: 9th May 2026
+### Date: 11th May 2026
 
 #### What I worked on:
 
-- Project setup
-- Authentication
+- Creating tables from model
+- Created UI for signup page
 
 #### What I completed:
 
-- Created project
-- Set up requirements
-- First push to GitHub
-- Added signup page
+- Created first table (user) using model from schema.prisma
+- Created UI for signup page
 
 ### Issues:
 
@@ -18,8 +16,8 @@ N/A
 
 #### What I learned:
 
-- Using Auth.js to add credentials
+- Using Prisma CLI to create a table in the database based on my model
 
 ### Next step:
 
-- Adding authentication
+- Creating a signup page so I can create users, and then authenticate them when logging in

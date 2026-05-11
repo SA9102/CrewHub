@@ -7,9 +7,9 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "./ui/field"
-import { Input } from "./ui/input"
-import { Button } from "./ui/button"
+} from "../ui/field"
+import { Input } from "../ui/input"
+import { Button } from "../ui/button"
 
 const SignIn = () => {
   return (
