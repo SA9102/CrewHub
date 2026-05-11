@@ -21,3 +21,4 @@ N/A
 ### Next step:
 
 - Creating a signup page so I can create users, and then authenticate them when logging in
+- Adding users to database when signing up
