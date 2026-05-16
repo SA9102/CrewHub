@@ -8,6 +8,7 @@
 #### What I completed:
 
 - Created logic for creating user in database, using Prisma
+- Password criteria checking
 
 ### Issues:
 
@@ -19,7 +20,7 @@ N/A
 
 ### Next step:
 
-- Continuing to create a signup page so I can create users, and then authenticate them when logging in
+- Creating the signup page, including validation of inputs
 
 ---
 
@@ -53,11 +54,13 @@ N/A
 
 #### What I worked on:
 
+- Authentication
 - Creating tables from model
 - Created UI for signup page
 
 #### What I completed:
 
+- Added signup page
 - Created first table (user) using model from schema.prisma
 - Created UI for signup page
 
@@ -67,9 +70,36 @@ N/A
 
 #### What I learned:
 
+- Using Auth.js to add credentials
 - Using Prisma CLI to create a table in the database based on my model
 
 ### Next step:
 
 - Creating a signup page so I can create users, and then authenticate them when logging in
 - Adding users to database when signing up
+
+---
+
+### Date: 9th May 2026
+
+#### What I worked on:
+
+- Project setup
+
+#### What I completed:
+
+- Created project
+- Set up requirements
+- First push to GitHub
+
+### Issues:
+
+N/A
+
+#### What I learned:
+
+N/A
+
+### Next step:
+
+- Add models
