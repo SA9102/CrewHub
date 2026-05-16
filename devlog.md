@@ -1,3 +1,28 @@
+### Date: 16th May 2026
+
+#### What I worked on:
+
+- Worked on signup page
+- Creating logic for creating user in database, using Prisma
+
+#### What I completed:
+
+- Created logic for creating user in database, using Prisma
+
+### Issues:
+
+N/A
+
+#### What I learned:
+
+- How to set up and integrate Prisma in order to make queries
+
+### Next step:
+
+- Continuing to create a signup page so I can create users, and then authenticate them when logging in
+
+---
+
 ### Date: 15th May 2026
 
 #### What I worked on:

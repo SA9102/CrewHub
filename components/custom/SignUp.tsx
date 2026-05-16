@@ -13,8 +13,7 @@ import {
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { useState } from "react"
-
-import { postUser } from "@/app/api/users/route"
+import axios from "axios"
 
 interface formInput {
   firstName: string
@@ -32,6 +31,22 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   })
+
+  const handleSubmit = async () => {
+    try {
+      await axios.post(
+        "/api/user",
+        {
+          firstName: formInput.firstName,
+          lastName: formInput.lastName,
+          email: formInput.email,
+        },
+        {}
+      )
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center">
@@ -98,17 +113,7 @@ const SignUp = () => {
               aria-invalid
             />
           </Field>
-          <Button
-            onClick={() =>
-              postUser({
-                firstName: formInput.firstName,
-                lastName: formInput.lastName,
-                email: formInput.email,
-              })
-            }
-          >
-            Sign Up
-          </Button>
+          <Button onClick={handleSubmit}>Sign Up</Button>
         </FieldGroup>
       </FieldSet>
     </div>
