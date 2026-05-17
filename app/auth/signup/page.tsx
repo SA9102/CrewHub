@@ -14,7 +14,7 @@ import {
   FieldLegend,
   FieldSet,
 } from "@/components/ui/field"
-import { H1 } from "@/components/ui/typography"
+import { H1, H2 } from "@/components/ui/typography"
 import { Input } from "@/components/ui/input"
 import {
   Tooltip,
@@ -28,6 +28,7 @@ import axios from "axios"
 import { signupInput } from "@/lib/types/inputs"
 
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 const page = () => {
   const [formInput, setFormInput] = useState<signupInput>({
@@ -58,7 +59,7 @@ const page = () => {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <FieldSet className="mx-auto flex w-full max-w-sm flex-col">
-        <H1>SIGN UP</H1>
+        <H2>SIGN UP</H2>
         {/* <FieldLegend>Sign In</FieldLegend> */}
         <FieldGroup>
           <Field>
@@ -162,6 +163,9 @@ const page = () => {
           )}
           <Button onClick={handleSubmit}>Sign Up</Button>
         </FieldGroup>
+        <p className="self-center text-sm">
+          <Link href="/auth/signin">Already have an account?</Link>
+        </p>
       </FieldSet>
     </div>
   )

@@ -2,8 +2,9 @@
 
 #### What I worked on:
 
-- Signup page
+- Signup and signin pages
 - API logic for creating user
+- Authenticating the user
 
 #### What I completed:
 
@@ -11,6 +12,8 @@
 - Fixed password criteria checking bug
 - Checks if first name, last name and email are valid
 - Redirects to signin page if account creation successful
+- If redirected, success message appears
+- Links in both signin and signup pages to navigate if user has or does not have an account
 
 ### Issues:
 
@@ -23,7 +26,6 @@ N/A
 ### Next steps:
 
 - Authenticating user
-- Message saying that account creation was successful
 
 ---
 

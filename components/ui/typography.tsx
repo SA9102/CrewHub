@@ -17,7 +17,10 @@ export function H1(props: React.HTMLAttributes<HTMLHeadingElement>) {
 export function H2(props: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h2
-      className={cn("text-3xl font-semibold tracking-tight", props.className)}
+      className={cn(
+        "mb-10 text-3xl font-semibold tracking-tight",
+        props.className
+      )}
       {...props}
     />
   )
