@@ -45,7 +45,7 @@ The system shall support the following user roles:
 ### 3.1 Authentication & Accounts
 
 - [ ] Users can register and log in securely
-- [ ] Passwords must be securely hashed
+- [x] Passwords must be securely hashed
 - [ ] Sessions must persist across browser refresh
 - [ ] Users can log out from all devices
 

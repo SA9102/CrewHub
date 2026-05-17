@@ -1,3 +1,32 @@
+### Date: 17th May 2026
+
+#### What I worked on:
+
+- Signup page
+- API logic for creating user
+
+#### What I completed:
+
+- Requirement 3.1.2
+- Fixed password criteria checking bug
+- Checks if first name, last name and email are valid
+- Redirects to signin page if account creation successful
+
+### Issues:
+
+N/A
+
+#### What I learned:
+
+- Using 'useRouter' to redirect in client components
+
+### Next steps:
+
+- Authenticating user
+- Message saying that account creation was successful
+
+---
+
 ### Date: 16th May 2026
 
 #### What I worked on:

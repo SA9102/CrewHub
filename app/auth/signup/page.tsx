@@ -1,4 +1,10 @@
 "use client"
+
+// React imports
+import { useState } from "react"
+
+// shadcn imports
+import { Button } from "@/components/ui/button"
 import {
   Field,
   FieldDescription,
@@ -8,19 +14,20 @@ import {
   FieldLegend,
   FieldSet,
 } from "@/components/ui/field"
+import { H1 } from "@/components/ui/typography"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
-import axios from "axios"
-
-import { InfoIcon } from "lucide-react"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { InfoIcon } from "lucide-react"
+
+import axios from "axios"
 
 import { signupInput } from "@/lib/types/inputs"
+
+import { useRouter } from "next/navigation"
 
 const page = () => {
   const [formInput, setFormInput] = useState<signupInput>({
@@ -31,19 +38,27 @@ const page = () => {
     confirmPassword: "",
   })
   const [errorMessage, setErrorMessage] = useState("")
+  const router = useRouter()
 
   const handleSubmit = async () => {
     try {
       const res = await axios.post("/api/user", formInput, {})
+      if (res.status === 201) {
+        router.replace("/auth/signin?created=true")
+      }
     } catch (err: any) {
-      console.error(err)
-      setErrorMessage(err.response.data.error)
+      if (err.response.data) {
+        setErrorMessage(err.response.data.error)
+      } else {
+        setErrorMessage("An error occurred")
+      }
     }
   }
 
   return (
     <div className="flex min-h-screen items-center justify-center">
       <FieldSet className="mx-auto flex w-full max-w-sm flex-col">
+        <H1>SIGN UP</H1>
         {/* <FieldLegend>Sign In</FieldLegend> */}
         <FieldGroup>
           <Field>
@@ -73,7 +88,15 @@ const page = () => {
             />
           </Field>
           <Field>
-            <FieldLabel htmlFor="email">Email</FieldLabel>
+            <FieldLabel htmlFor="email">
+              Email
+              <Tooltip>
+                <TooltipTrigger>
+                  <InfoIcon size="16px" />
+                </TooltipTrigger>
+                <TooltipContent>Must be unique</TooltipContent>
+              </Tooltip>
+            </FieldLabel>
             <Input
               id="email"
               name="email"
@@ -114,6 +137,10 @@ const page = () => {
               type="password"
               autoComplete="off"
               aria-invalid
+              value={formInput.password}
+              onChange={(e) =>
+                setFormInput({ ...formInput, password: e.target.value })
+              }
             />
           </Field>
           <Field>
@@ -124,6 +151,10 @@ const page = () => {
               type="password"
               autoComplete="off"
               aria-invalid
+              value={formInput.confirmPassword}
+              onChange={(e) =>
+                setFormInput({ ...formInput, confirmPassword: e.target.value })
+              }
             />
           </Field>
           {errorMessage !== "" && (

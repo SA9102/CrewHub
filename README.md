@@ -12,6 +12,14 @@ This is a simple application that will allow small teams to:
 - React
 - Next.js
 - TypeScript
+- Neon (Postgres database)
+- Prisma (ORM)
+- shadcn (component library)
+
+## Main Utility Libraries
+
+- Auth.js (credential authentication)
+- bcrypt (hashing and salting passwords)
 
 ## Requirements
 
