@@ -19,6 +19,7 @@ import { toast } from "sonner"
 import { useEffect, useState } from "react"
 import { H2 } from "@/components/ui/typography"
 import Link from "next/link"
+import axios from "axios"
 
 const SignIn = () => {
   const searchParams = useSearchParams()
@@ -51,7 +52,7 @@ const SignIn = () => {
 
   const handleSubmit = async () => {
     try {
-      await signIn("credentials", formInput)
+      const res = await axios.post("/api/auth/signin", formInput, {})
     } catch (err) {
       console.error(err)
     }
