@@ -1,6 +1,5 @@
 "use client"
 
-import { signIn } from "@/auth"
 import {
   Field,
   FieldDescription,
@@ -84,7 +83,7 @@ const SignIn = () => {
               aria-invalid
             />
           </Field>
-          <Button>Sign In</Button>
+          <Button onClick={handleSubmit}>Sign In</Button>
         </FieldGroup>
         <p className="self-center text-sm">Forgot password?</p>
         <p className="self-center text-sm">
