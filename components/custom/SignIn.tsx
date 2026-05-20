@@ -19,11 +19,15 @@ import { useEffect, useState } from "react"
 import { H2 } from "@/components/ui/typography"
 import Link from "next/link"
 import axios from "axios"
+import { signinInput } from "@/lib/types/inputs"
 
 const SignIn = () => {
   const searchParams = useSearchParams()
   const createdParam = searchParams.get("created")
-  const [formInput, setFormInput] = useState({ email: "", password: "" })
+  const [formInput, setFormInput] = useState<signinInput>({
+    email: "",
+    password: "",
+  })
 
   // {
   //   createdParam &&

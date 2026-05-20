@@ -21,6 +21,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (credentials) => {
         let user = null
 
+        if (!credentials || typeof credentials.password !== "string") {
+          throw new Error("Missing or invalid password")
+        }
+
         // logic to salt and hash password
         const pwHash = await hashAndSaltPassword(credentials.password)
 

@@ -5,3 +5,8 @@ export interface signupInput {
   password: string
   confirmPassword: string
 }
+
+export interface signinInput {
+  email: string
+  password: string
+}
