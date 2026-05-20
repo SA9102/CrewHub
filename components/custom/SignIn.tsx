@@ -36,15 +36,6 @@ const SignIn = () => {
   //     })
   // }
 
-  if (createdParam) {
-    console.log("CREATED")
-    toast.info("Account successfully created. You may now log in.", {
-      position: "bottom-center",
-    })
-  } else {
-    console.log("NOT CREATED")
-  }
-
   useEffect(() => {
     if (searchParams.get("created")) {
       toast.info("Account successfully created. You may now log in.", {
