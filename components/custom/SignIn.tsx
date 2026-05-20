@@ -12,7 +12,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
-import { useSearchParams } from "next/navigation"
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 import { useEffect, useState } from "react"
@@ -22,8 +21,6 @@ import axios from "axios"
 import { signinInput } from "@/lib/types/inputs"
 
 const SignIn = () => {
-  const searchParams = useSearchParams()
-  const createdParam = searchParams.get("created")
   const [formInput, setFormInput] = useState<signinInput>({
     email: "",
     password: "",
@@ -35,14 +32,6 @@ const SignIn = () => {
   //       position: "bottom-center",
   //     })
   // }
-
-  useEffect(() => {
-    if (searchParams.get("created")) {
-      toast.info("Account successfully created. You may now log in.", {
-        position: "bottom-center",
-      })
-    }
-  }, [])
 
   const handleSubmit = async () => {
     try {
