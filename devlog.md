@@ -1,3 +1,34 @@
+### Date:
+
+### What I worked on:
+
+- Writing integration tests
+
+#### What I completed:
+
+- Added first test for account creation: checks if invalid first name or last name
+
+#### What I completed:
+
+- Write more tests for account creation
+
+---
+
+### Date: 20th May 2026
+
+#### What I worked on:
+
+- Deployment
+- Signup page
+
+#### What I completed:
+
+- Temporarily removed "account creation successful" message due to issues of using searchParams in the client
+- Finally managed to deploy to netlify, after a few days of attempting
+- Added spinner when system is attempting to create account
+
+---
+
 ### Date: 17th May 2026
 
 #### What I worked on:

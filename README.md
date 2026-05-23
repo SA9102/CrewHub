@@ -19,7 +19,11 @@ This is a simple application that will allow small teams to:
 ## Main Utility Libraries
 
 - Auth.js (credential authentication)
-- bcrypt (hashing and salting passwords)
+- bcryptjs (hashing and salting passwords)
+
+## Concepts learned:
+
+- Client and server components, and when to use one over the other
 
 ## Requirements
 

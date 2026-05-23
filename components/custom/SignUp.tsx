@@ -29,6 +29,7 @@ import { signupInput } from "@/lib/types/inputs"
 
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { Spinner } from "../ui/spinner"
 
 const page = () => {
   const [formInput, setFormInput] = useState<signupInput>({
@@ -39,9 +40,11 @@ const page = () => {
     confirmPassword: "",
   })
   const [errorMessage, setErrorMessage] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
   const handleSubmit = async () => {
+    setIsLoading(true)
     try {
       const res = await axios.post("/api/user", formInput, {})
       if (res.status === 201) {
@@ -53,6 +56,8 @@ const page = () => {
       } else {
         setErrorMessage("An error occurred")
       }
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -161,7 +166,9 @@ const page = () => {
           {errorMessage !== "" && (
             <p className="text-red-700">{errorMessage}</p>
           )}
-          <Button onClick={handleSubmit}>Sign Up</Button>
+          <Button onClick={handleSubmit} disabled={isLoading}>
+            {isLoading ? <Spinner /> : "Sign Up"}
+          </Button>
         </FieldGroup>
         <p className="self-center text-sm">
           <Link href="/auth/signin">Already have an account?</Link>
