@@ -57,10 +57,6 @@ export const POST = async (req: Request) => {
       return Response.json({ error: "Email already taken" }, { status: 409 })
     }
 
-    // Check if password meets criteria
-    console.log("BODY PASSWORD")
-    console.log(body.password)
-
     if (!passwordRegex.test(body.password)) {
       return Response.json(
         { error: "Password does not meet all criteria" },

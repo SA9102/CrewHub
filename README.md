@@ -20,10 +20,12 @@ This is a simple application that will allow small teams to:
 
 - Auth.js (credential authentication)
 - bcryptjs (hashing and salting passwords)
+- Vitest (test suite, very similar to Jest)
 
 ## Concepts learned:
 
 - Client and server components, and when to use one over the other
+- Using Vitest for integration testing - testing API routes
 
 ## Requirements
 

@@ -6,11 +6,11 @@
 
 #### What I completed:
 
-- Added first test for account creation: checks if invalid first name or last name
+- Added integration tests that validate all credentials - rejects if any of them are invalid
 
-#### What I completed:
+#### Next steps:
 
-- Write more tests for account creation
+- Write test for checking if user is created in database
 
 ---
 
