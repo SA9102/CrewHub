@@ -4,6 +4,34 @@ import axios from "axios"
 import { describe, test, it, expect } from "vitest"
 
 describe("account registration", () => {
+  it("should reject if invalid organisation name", async () => {
+    const api = async (organisationName: string) => {
+      // Using 'fetch' instead of 'axios', for simpler testing
+      const res = await fetch(BASE_URL_DEV + POST_USER, {
+        method: "POST",
+        body: JSON.stringify({
+          organisationName,
+          firstName: "john",
+          lastName: "smith",
+          email: "a@a.com",
+          password: "Abcd123@",
+          confirmPassword: "Abcd123@",
+        }),
+      })
+
+      return res
+    }
+
+    let res = await api("")
+    expect(res.status).toBe(400)
+
+    res = await api("1@a")
+    expect(res.status).toBe(400)
+
+    res = await api("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    expect(res.status).toBe(400)
+  })
+
   it("should reject if invalid first name or last name", async () => {
     interface input {
       firstName: string
@@ -16,6 +44,7 @@ describe("account registration", () => {
         method: "POST",
         body: JSON.stringify({
           ...input,
+          organisationName: "Acme LTD",
           email: "a@a.com",
           password: "a",
           confirmPassword: "a",
@@ -60,6 +89,7 @@ describe("account registration", () => {
         method: "POST",
         body: JSON.stringify({
           ...input,
+          organisationName: "Acme LTD",
           firstName: "john",
           lastName: "smith",
           password: "a",
@@ -96,6 +126,7 @@ describe("account registration", () => {
         method: "POST",
         body: JSON.stringify({
           ...input,
+          organisationName: "Acme LTD",
           firstName: "john",
           lastName: "smith",
           password: "ABcd123@*",
@@ -119,6 +150,7 @@ describe("account registration", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          organisationName: "Acme LTD",
           firstName: "john",
           lastName: "smith",
           // Generate a unique mock email, so that there is no risk of the test being
@@ -167,6 +199,7 @@ describe("account registration", () => {
         },
         body: JSON.stringify({
           ...input,
+          organisationName: "Acme LTD",
           firstName: "john",
           lastName: "smith",
           // Generate a unique mock email, so that there is no risk of the test being

@@ -1,3 +1,44 @@
+### Date: 27th May 2026
+
+### What I worked on:
+
+- Creating a 'magic link' provider so owner can send an email to an email account, inviting the user to create an account
+
+### Issues:
+
+- Error when attempting to send email
+
+### Next steps:
+
+- Complete the magic link
+- Testing: Write test for checking if user is created in database during account creation
+- Modify the account creation to also create an organisation
+
+---
+
+### Date: 24th May 2026
+
+#### What I worked on
+
+- Sign up page
+
+#### What I completed
+
+- Had ChatGPT regenerate the requirements, to include criteria for this application to have organisations and a hierarchy of users.
+- In sign up page, added fields for organisation name.
+- Added test for testing organisation name
+
+#### Issues:
+
+N/A
+
+#### Next steps:
+
+- Write test for checking if user is created in database during account creation
+- Modify the account creation to also create an organisation
+
+---
+
 ### Date: 23rd May 2026
 
 ### What I worked on:
@@ -7,6 +48,10 @@
 #### What I completed:
 
 - Added integration tests that validate all credentials - rejects if any of them are invalid
+
+#### What I learned:
+
+- Adding integration tests with Vitest
 
 #### Next steps:
 
@@ -46,7 +91,7 @@
 - If redirected, success message appears
 - Links in both signin and signup pages to navigate if user has or does not have an account
 
-### Issues:
+#### Issues:
 
 N/A
 
@@ -54,7 +99,7 @@ N/A
 
 - Using 'useRouter' to redirect in client components
 
-### Next steps:
+#### Next steps:
 
 - Authenticating user
 
@@ -72,7 +117,7 @@ N/A
 - Created logic for creating user in database, using Prisma
 - Password criteria checking
 
-### Issues:
+#### Issues:
 
 N/A
 
@@ -80,7 +125,7 @@ N/A
 
 - How to set up and integrate Prisma in order to make queries
 
-### Next step:
+#### Next step:
 
 - Creating the signup page, including validation of inputs
 
@@ -97,7 +142,7 @@ N/A
 
 - changed /signin and /signup URL routes to /auth/signin and /auth/signup respectively
 
-### Issues:
+#### Issues:
 
 N/A
 
@@ -105,7 +150,7 @@ N/A
 
 N/A
 
-### Next step:
+#### Next step:
 
 - Continuing to create a signup page so I can create users, and then authenticate them when logging in
 - Continuing to create logic to add users to database when signing up
@@ -126,7 +171,7 @@ N/A
 - Created first table (user) using model from schema.prisma
 - Created UI for signup page
 
-### Issues:
+#### Issues:
 
 N/A
 
@@ -135,7 +180,7 @@ N/A
 - Using Auth.js to add credentials
 - Using Prisma CLI to create a table in the database based on my model
 
-### Next step:
+#### Next step:
 
 - Creating a signup page so I can create users, and then authenticate them when logging in
 - Adding users to database when signing up
@@ -154,7 +199,7 @@ N/A
 - Set up requirements
 - First push to GitHub
 
-### Issues:
+#### Issues:
 
 N/A
 
@@ -162,6 +207,6 @@ N/A
 
 N/A
 
-### Next step:
+#### Next step:
 
 - Add models

@@ -33,6 +33,7 @@ import { Spinner } from "../ui/spinner"
 
 const page = () => {
   const [formInput, setFormInput] = useState<signupInput>({
+    organisationName: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -62,11 +63,31 @@ const page = () => {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="mt-10 mb-10 flex min-h-screen items-center justify-center">
       <FieldSet className="mx-auto flex w-full max-w-sm flex-col">
-        <H2>SIGN UP</H2>
+        <H2>CREATE ORGANISATION</H2>
         {/* <FieldLegend>Sign In</FieldLegend> */}
         <FieldGroup>
+          <Field>
+            <FieldLabel htmlFor="organisation-name">
+              Organisation Name
+            </FieldLabel>
+            <Input
+              id="organisation-name"
+              name="organisation-name"
+              autoComplete="off"
+              aria-invalid
+              value={formInput.organisationName}
+              onChange={(e) =>
+                setFormInput({ ...formInput, organisationName: e.target.value })
+              }
+            />
+          </Field>
+
+          <p className="text-xs">
+            You will automatically become the owner of your organisation. This
+            can be changed later.
+          </p>
           <Field>
             <FieldLabel htmlFor="first-name">First Name</FieldLabel>
             <Input

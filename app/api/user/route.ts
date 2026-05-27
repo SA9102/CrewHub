@@ -1,6 +1,7 @@
 import { hashAndSaltPassword } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 import { signupInput } from "@/lib/types/inputs"
+import { hasFailedRegex } from "@/lib/utils"
 
 /**
  * Creates a new user
@@ -12,10 +13,14 @@ export const POST = async (req: Request) => {
     let body: signupInput = await req.json()
     body = {
       ...body,
+      organisationName: body.organisationName.trim(),
       firstName: body.firstName.trim(),
       lastName: body.lastName.trim(),
       email: body.email.toLowerCase().trim(),
     }
+
+    // ChatGPT-generated regex for checking organisation name criteria
+    const organisationRegex = /^[a-zA-Z0-9][a-zA-Z0-9 '&-]{1,48}[a-zA-Z0-9]$/
 
     // ChatGPT-generated regex for checking name criteria
     const nameRegex = /^[a-zA-Z\s'-]{2,50}$/
@@ -27,26 +32,21 @@ export const POST = async (req: Request) => {
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_\-+=?]).{8,}$/
 
-    // Check if first name meets criteria
-    if (!nameRegex.test(body.firstName)) {
-      return Response.json(
-        { error: "First name has invalid characters/length" },
-        { status: 400 }
-      )
-    }
+    let error = hasFailedRegex(
+      "Organisation name",
+      body.organisationName,
+      organisationRegex
+    )
+    if (error) return error
 
-    // Check if last name meets criteria
-    if (!nameRegex.test(body.lastName)) {
-      return Response.json(
-        { error: "Last name has invalid characters/length" },
-        { status: 400 }
-      )
-    }
+    error = hasFailedRegex("First name", body.firstName, nameRegex)
+    if (error) return error
 
-    // Check if email meets criteria
-    if (!emailRegex.test(body.email)) {
-      return Response.json({ error: "Invalid email" }, { status: 400 })
-    }
+    error = hasFailedRegex("Last name", body.lastName, nameRegex)
+    if (error) return error
+
+    error = hasFailedRegex("Email", body.email, emailRegex)
+    if (error) return error
 
     // Check if email already exists
     const emailExists = await prisma.user.findUnique({
@@ -56,6 +56,8 @@ export const POST = async (req: Request) => {
     if (emailExists) {
       return Response.json({ error: "Email already taken" }, { status: 409 })
     }
+
+    // Check if password meets criteria
 
     if (!passwordRegex.test(body.password)) {
       return Response.json(
