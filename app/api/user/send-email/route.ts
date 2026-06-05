@@ -5,6 +5,7 @@ import { signIn } from "@/auth"
 TODO
 
 - Link needs expiry data
+- Link cannot be used more than once
 - Should not be able to send more than one invite to a user unless link expired
 
 */
@@ -20,8 +21,8 @@ export const POST = async (req: Request) => {
     const response = await resend.emails.send({
       from: "Admin <aaa@resend.dev>",
       to: ["shayan677@gmail.com"],
-      subject: "Verify your account",
-      html: "<p>The admin of your organisation has invited you to create an account. Click the link below to do so.<br />If you believe this was done in error, please ignore this email.</p>",
+      subject: "Invitation",
+      html: "<p>The admin of your organisation has invited you to create an account. <a href='http://localhost:3000/auth/signin'>Click here to create your account.</a><br />If you believe this was done in error, please ignore this email.</p>",
     })
     return Response.json({ message: "Ok" }, { status: 200 })
   } catch (error) {

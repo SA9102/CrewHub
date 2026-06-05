@@ -2,8 +2,9 @@
 
 #### Completed:
 
-- Email sending for invite (right now without link) now works. Using Resend as the mailer.
-- Created a [tasks list file](./tasks.md) to keep track of immediate tasks that need to be done to ensure nothing is missed
+- Email sending for invite (right now without correct link) now works. Using Resend as the mailer.
+- Created a [tasks list file](./tasks.md) to keep track of immediate tasks that need to be done to ensure nothing is missed.
+- Created InviteToken model for storing valid and active invite tokens.
 
 #### Issues:
 
