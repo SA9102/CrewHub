@@ -12,7 +12,7 @@ const Users = () => {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post("/api/user/send-email", email, {})
+      const res = await axios.post("/api/user/send-email", { email }, {})
     } catch (err) {
       console.error(err)
     }

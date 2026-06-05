@@ -1,14 +1,27 @@
+### Date: 5th June 2026
+
+#### Completed:
+
+- Email sending for invite (right now without link) now works. Using Resend as the mailer.
+- Created a [tasks list file](./tasks.md) to keep track of immediate tasks that need to be done to ensure nothing is missed
+
+#### Issues:
+
+N/A
+
+---
+
 ### Date: 27th May 2026
 
-### What I worked on:
+#### What I worked on:
 
 - Creating a 'magic link' provider so owner can send an email to an email account, inviting the user to create an account
 
-### Issues:
+#### Issues:
 
 - Error when attempting to send email
 
-### Next steps:
+#### Next steps:
 
 - Complete the magic link
 - Testing: Write test for checking if user is created in database during account creation

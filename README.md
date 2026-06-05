@@ -21,6 +21,7 @@ This is a simple application that will allow small teams to:
 - Auth.js (credential authentication)
 - bcryptjs (hashing and salting passwords)
 - Vitest (test suite, very similar to Jest)
+- Resend (send emails)
 
 ## Concepts learned:
 
@@ -29,7 +30,11 @@ This is a simple application that will allow small teams to:
 
 ## Requirements
 
-See the [requirements](./requirements.md) for more information about what this application contains, and what to expect.
+See the [requirements list](./requirements.md) for more information about what this application contains, and what to expect.
+
+## Tasks
+
+See the [tasks list](./tasks.md) for more information on the specific development tasks that are of priority right now, to ensure the application is built properly and nothing is missed.
 
 ## Devlog
 
