@@ -30,8 +30,12 @@ import { signupInput } from "@/lib/types/inputs"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Spinner } from "../ui/spinner"
+import { API_POST_ORGANISATION } from "@/lib/routes"
 
-const page = () => {
+// When creating an organisation, a user also creates an account.
+// They automatically become the top-level admin of that organisation,
+// which can be changed later.
+const CreateOrganisation = () => {
   const [formInput, setFormInput] = useState<signupInput>({
     organisationName: "",
     firstName: "",
@@ -47,7 +51,7 @@ const page = () => {
   const handleSubmit = async () => {
     setIsLoading(true)
     try {
-      const res = await axios.post("/api/user", formInput, {})
+      const res = await axios.post(API_POST_ORGANISATION, formInput, {})
       if (res.status === 201) {
         router.replace("/auth/signin?created=true")
       }
@@ -199,4 +203,4 @@ const page = () => {
   )
 }
 
-export default page
+export default CreateOrganisation

@@ -5,6 +5,7 @@ import GitHub from "next-auth/providers/github"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "./prisma"
 import Resend from "next-auth/providers/resend"
+import { signinInput } from "./lib/types/inputs"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
@@ -23,41 +24,44 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           placeholder: "*****",
         },
       },
-      authorize: async (credentials) => {
-        let user = null
+      authorize: async (credentials: signinInput) => {
+        try {
+          console.log("IN AUTHORIZE")
+          let user = null
 
-        if (!credentials || typeof credentials.password !== "string") {
-          throw new Error("Missing or invalid password")
+          if (
+            !credentials ||
+            typeof credentials.email !== "string" ||
+            typeof credentials.password !== "string"
+          ) {
+            throw new Error("Missing or invalid credentials")
+          }
+
+          // logic to salt and hash password
+          const pwHash = await hashAndSaltPassword(credentials.password)
+
+          // logic to verify if the user exists
+          // user = await getUserFromDb(credentials.email, pwHash)
+          user = await prisma.user.findUnique({
+            where: {
+              email: credentials.email,
+              password: pwHash,
+            },
+          })
+
+          if (!user) {
+            // No user found, so this is their first attempt to login
+            // Optionally, this is also the place you could do a user registration
+            throw new Error("Invalid credentials.")
+          }
+
+          // return user object with their profile data
+          return user
+        } catch (err) {
+          console.error(err)
         }
-
-        // logic to salt and hash password
-        const pwHash = await hashAndSaltPassword(credentials.password)
-
-        // logic to verify if the user exists
-        // user = await getUserFromDb(credentials.email, pwHash)
-        user = null
-
-        if (!user) {
-          // No user found, so this is their first attempt to login
-          // Optionally, this is also the place you could do a user registration
-          throw new Error("Invalid credentials.")
-        }
-
-        // return user object with their profile data
-        return user
       },
     }),
     // GitHub,
   ],
 })
-
-// import { Resend } from 'resend';
-
-// const resend = new Resend('re_Xw6gxvfQ_MxGiBSZZK6Kf5XkKfCqZKCQD');
-
-// resend.emails.send({
-//   from: 'onboarding@resend.dev',
-//   to: 'shayan677@gmail.com',
-//   subject: 'Hello World',
-//   html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
-// });

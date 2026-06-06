@@ -19,6 +19,10 @@ import { H2 } from "@/components/ui/typography"
 import Link from "next/link"
 import axios from "axios"
 import { signinInput } from "@/lib/types/inputs"
+import { signIn } from "next-auth/react"
+import { API_POST_SIGNIN, URL_CREATE_ORGANISATION } from "@/lib/routes"
+
+axios.defaults.withXSRFToken = true
 
 const SignIn = () => {
   const [formInput, setFormInput] = useState<signinInput>({
@@ -33,11 +37,17 @@ const SignIn = () => {
   //     })
   // }
 
-  
-
   const handleSubmit = async () => {
+    // try {
+    //   const res = await axios.post(API_POST_SIGNIN, formInput, {})
+    // } catch (err) {
+    //   console.error(err)
+    // }
+
     try {
-      const res = await axios.post("/api/auth/signin", formInput, {})
+      console.log("Before")
+      await signIn("credentials", { ...formInput })
+      console.log("After")
     } catch (err) {
       console.error(err)
     }
@@ -73,7 +83,7 @@ const SignIn = () => {
         </FieldGroup>
         <p className="self-center text-sm">Forgot password?</p>
         <p className="self-center text-sm">
-          <Link href="/auth/signup">Need an account?</Link>
+          <Link href={URL_CREATE_ORGANISATION}>Need an account?</Link>
         </p>
       </FieldSet>
       <Toaster />

@@ -1,4 +1,4 @@
-import { BASE_URL_DEV, POST_USER } from "@/lib/routes"
+import { BASE_URL_DEV, API_POST_ORGANISATION } from "@/lib/routes"
 import { signupInput } from "@/lib/types/inputs"
 import axios from "axios"
 import { describe, test, it, expect } from "vitest"
@@ -7,7 +7,7 @@ describe("account registration", () => {
   it("should reject if invalid organisation name", async () => {
     const api = async (organisationName: string) => {
       // Using 'fetch' instead of 'axios', for simpler testing
-      const res = await fetch(BASE_URL_DEV + POST_USER, {
+      const res = await fetch(BASE_URL_DEV + API_POST_ORGANISATION, {
         method: "POST",
         body: JSON.stringify({
           organisationName,
@@ -40,7 +40,7 @@ describe("account registration", () => {
 
     const api = async (input: input) => {
       // Using 'fetch' instead of 'axios', for simpler testing
-      const res = await fetch(BASE_URL_DEV + POST_USER, {
+      const res = await fetch(BASE_URL_DEV + API_POST_ORGANISATION, {
         method: "POST",
         body: JSON.stringify({
           ...input,
@@ -85,7 +85,7 @@ describe("account registration", () => {
     }
 
     const api = async (input: input) => {
-      const res = await fetch(BASE_URL_DEV + POST_USER, {
+      const res = await fetch(BASE_URL_DEV + API_POST_ORGANISATION, {
         method: "POST",
         body: JSON.stringify({
           ...input,
@@ -122,7 +122,7 @@ describe("account registration", () => {
     }
 
     const api = async (input: input) => {
-      const res = await fetch(BASE_URL_DEV + POST_USER, {
+      const res = await fetch(BASE_URL_DEV + API_POST_ORGANISATION, {
         method: "POST",
         body: JSON.stringify({
           ...input,
@@ -144,7 +144,7 @@ describe("account registration", () => {
 
   it("should reject if invalid password", async () => {
     const api = async (password: string) => {
-      const res = await fetch(BASE_URL_DEV + POST_USER, {
+      const res = await fetch(BASE_URL_DEV + API_POST_ORGANISATION, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -192,7 +192,7 @@ describe("account registration", () => {
     }
 
     const api = async (input: input) => {
-      const res = await fetch(BASE_URL_DEV + POST_USER, {
+      const res = await fetch(BASE_URL_DEV + API_POST_ORGANISATION, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -215,4 +215,6 @@ describe("account registration", () => {
     let res = await api({ password: "ABcd123@*", confirmPassword: "a" })
     expect(res.status).toBe(400)
   })
+
+  it("should create an organisation and its top-level admin if all inputs are valid", async () => {})
 })

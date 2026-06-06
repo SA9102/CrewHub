@@ -1,2 +1,8 @@
 export const BASE_URL_DEV = "http://localhost:3000"
-export const POST_USER = "/api/user"
+
+// URL Routes
+export const URL_CREATE_ORGANISATION = "/auth/create-organisation"
+
+// API Routes
+export const API_POST_ORGANISATION = "/api/organisation"
+export const API_POST_SIGNIN = "/api/auth/signin"

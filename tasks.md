@@ -1,5 +1,7 @@
 ### Development
 
+#### Sign In
+
 #### Email Invite
 
 - Include link to user creation page in email
@@ -8,7 +10,6 @@
 
 #### Organisation
 
-- Modify account creation to also create an organisation
 - Have organisation ID appear as slug in URL instead of its name
 
 ### Testing

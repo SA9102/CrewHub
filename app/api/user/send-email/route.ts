@@ -24,6 +24,7 @@ export const POST = async (req: Request) => {
       subject: "Invitation",
       html: "<p>The admin of your organisation has invited you to create an account. <a href='http://localhost:3000/auth/signin'>Click here to create your account.</a><br />If you believe this was done in error, please ignore this email.</p>",
     })
+
     return Response.json({ message: "Ok" }, { status: 200 })
   } catch (error) {
     return Response.json(error, { status: 500 })

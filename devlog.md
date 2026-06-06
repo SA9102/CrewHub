@@ -1,3 +1,19 @@
+### Date: 6th June 2026
+
+#### Completed:
+
+- Created Organisation model
+- Created a one-to-many relationship between User and Organisation; an Organisation can have many Users, a User can belong to only one Organisation
+- 'SignUp' page changed to 'CreateOrganisation' page
+- In 'CreateOrganisation' page, an organisation now gets created along with its top-level admin who will automatically have a foreign key to it
+- Working on sign in functionality
+
+#### Issues:
+
+- Sign in not working - issues with authentication functionality
+
+---
+
 ### Date: 5th June 2026
 
 #### Completed:
