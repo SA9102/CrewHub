@@ -1,4 +1,16 @@
-### Date: 6th June 2026
+### 7th June 2026
+
+#### Completed:
+
+- Functionality for user authentication works (I think)
+
+#### Issues:
+
+- Issue with account creation: database not recognising the type of the id - mismatch between int and string
+
+---
+
+### 6th June 2026
 
 #### Completed:
 
@@ -14,7 +26,7 @@
 
 ---
 
-### Date: 5th June 2026
+### 5th June 2026
 
 #### Completed:
 
@@ -28,7 +40,7 @@ N/A
 
 ---
 
-### Date: 27th May 2026
+### 27th May 2026
 
 #### What I worked on:
 
@@ -46,7 +58,7 @@ N/A
 
 ---
 
-### Date: 24th May 2026
+### 24th May 2026
 
 #### What I worked on
 
@@ -69,7 +81,7 @@ N/A
 
 ---
 
-### Date: 23rd May 2026
+### 23rd May 2026
 
 ### What I worked on:
 
@@ -89,7 +101,7 @@ N/A
 
 ---
 
-### Date: 20th May 2026
+### 20th May 2026
 
 #### What I worked on:
 
@@ -104,7 +116,7 @@ N/A
 
 ---
 
-### Date: 17th May 2026
+### 17th May 2026
 
 #### What I worked on:
 
@@ -135,7 +147,7 @@ N/A
 
 ---
 
-### Date: 16th May 2026
+### 16th May 2026
 
 #### What I worked on:
 
@@ -161,7 +173,7 @@ N/A
 
 ---
 
-### Date: 15th May 2026
+### 15th May 2026
 
 #### What I worked on:
 
@@ -187,7 +199,7 @@ N/A
 
 ---
 
-### Date: 11th May 2026
+### 11th May 2026
 
 #### What I worked on:
 
@@ -217,7 +229,7 @@ N/A
 
 ---
 
-### Date: 9th May 2026
+### 9th May 2026
 
 #### What I worked on:
 

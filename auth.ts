@@ -1,65 +1,47 @@
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
-import { hashAndSaltPassword } from "@/lib/auth"
+import { hashAndSaltPassword, verifyPassword } from "@/lib/auth"
 import GitHub from "next-auth/providers/github"
-import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "./prisma"
 import Resend from "next-auth/providers/resend"
 import { signinInput } from "./lib/types/inputs"
 
+console.log("AUTH CONFIG LOADED")
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: PrismaAdapter(prisma),
   providers: [
-    Resend,
+    // Resend,
     Credentials({
       credentials: {
-        email: {
-          type: "email",
-          label: "Email",
-          placeholder: "johndoe@gmail.com",
-        },
-        password: {
-          type: "password",
-          label: "Password",
-          placeholder: "*****",
-        },
+        email: {},
+        password: {},
       },
-      authorize: async (credentials: signinInput) => {
-        try {
-          console.log("IN AUTHORIZE")
-          let user = null
+      authorize: async (credentials) => {
+        let user = null
 
-          if (
-            !credentials ||
-            typeof credentials.email !== "string" ||
-            typeof credentials.password !== "string"
-          ) {
-            throw new Error("Missing or invalid credentials")
-          }
+        user = await prisma.user.findUnique({
+          where: {
+            email: credentials.email as string,
+          },
+        })
 
-          // logic to salt and hash password
-          const pwHash = await hashAndSaltPassword(credentials.password)
-
-          // logic to verify if the user exists
-          // user = await getUserFromDb(credentials.email, pwHash)
-          user = await prisma.user.findUnique({
-            where: {
-              email: credentials.email,
-              password: pwHash,
-            },
-          })
-
-          if (!user) {
-            // No user found, so this is their first attempt to login
-            // Optionally, this is also the place you could do a user registration
-            throw new Error("Invalid credentials.")
-          }
-
-          // return user object with their profile data
-          return user
-        } catch (err) {
-          console.error(err)
+        if (!user) {
+          console.log("user not found")
+          throw new Error("Invalid credentials")
         }
+
+        const isValid = await verifyPassword(
+          credentials.password as string,
+          user.password
+        )
+
+        if (!isValid) {
+          console.log("invalid")
+          throw new Error("Invalid credentials")
+        }
+
+        console.log("User found")
+        return user
       },
     }),
     // GitHub,

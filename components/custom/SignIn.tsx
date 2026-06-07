@@ -22,8 +22,6 @@ import { signinInput } from "@/lib/types/inputs"
 import { signIn } from "next-auth/react"
 import { API_POST_SIGNIN, URL_CREATE_ORGANISATION } from "@/lib/routes"
 
-axios.defaults.withXSRFToken = true
-
 const SignIn = () => {
   const [formInput, setFormInput] = useState<signinInput>({
     email: "",
@@ -43,11 +41,10 @@ const SignIn = () => {
     // } catch (err) {
     //   console.error(err)
     // }
-
     try {
       console.log("Before")
-      await signIn("credentials", { ...formInput })
-      console.log("After")
+      const res = await signIn("credentials", { ...formInput, redirect: false })
+      console.log(res)
     } catch (err) {
       console.error(err)
     }
@@ -60,12 +57,16 @@ const SignIn = () => {
         {/* <FieldLegend>Sign In</FieldLegend> */}
         <FieldGroup>
           <Field>
-            <FieldLabel htmlFor="username">Username</FieldLabel>
+            <FieldLabel htmlFor="email">Email</FieldLabel>
             <Input
-              id="username"
-              name="username"
+              id="email"
+              name="email"
               autoComplete="off"
               aria-invalid
+              value={formInput.email}
+              onChange={(e) =>
+                setFormInput({ ...formInput, email: e.target.value })
+              }
             />
           </Field>
 
@@ -77,6 +78,10 @@ const SignIn = () => {
               type="password"
               autoComplete="off"
               aria-invalid
+              value={formInput.password}
+              onChange={(e) =>
+                setFormInput({ ...formInput, password: e.target.value })
+              }
             />
           </Field>
           <Button onClick={handleSubmit}>Sign In</Button>

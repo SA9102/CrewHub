@@ -1,7 +1,12 @@
 import "server-only"
 import bcrypt from "bcryptjs"
 
-export async function hashAndSaltPassword(password: string) {
+export const hashAndSaltPassword = async (password: string) => {
   const hashed = await bcrypt.hash(password, 10)
   return hashed
+}
+
+export const verifyPassword = async (password: string, hash: string) => {
+  const isValid = await bcrypt.compare(password, hash)
+  return isValid
 }
