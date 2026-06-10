@@ -25,9 +25,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           },
         })
 
+        // Throwing errors is deliberately designed to return 200,
+        // for compatibility and to prevent leaking security semantics
+
         if (!user) {
-          console.log("user not found")
           throw new Error("Invalid credentials")
+          // return null
         }
 
         const isValid = await verifyPassword(
@@ -36,8 +39,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         )
 
         if (!isValid) {
-          console.log("invalid")
           throw new Error("Invalid credentials")
+          // return null
         }
 
         console.log("User found")
@@ -46,4 +49,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
     // GitHub,
   ],
+  callbacks: {
+    jwt({ token, user }) {
+      if (user) {
+        token.id = user.id
+      }
+      return token
+    },
+    session({ session, token }) {
+      session.user.id = token.id as string
+      return session
+    },
+  },
 })

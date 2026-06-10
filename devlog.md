@@ -1,3 +1,19 @@
+### 10th June 2026
+
+#### Worked on:
+
+- Trying to send back appropriate session data to browser when user logs in, so that the user can be redirected to the correct URL.
+
+---
+
+### 8th June 2026
+
+#### Completed:
+
+- Fixed mismatch between int and string for id of 'User' between neon table and prisma schema
+
+---
+
 ### 7th June 2026
 
 #### Completed:

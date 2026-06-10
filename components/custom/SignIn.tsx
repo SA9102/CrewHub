@@ -14,19 +14,33 @@ import { Button } from "@/components/ui/button"
 
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
 import { H2 } from "@/components/ui/typography"
 import Link from "next/link"
 import axios from "axios"
 import { signinInput } from "@/lib/types/inputs"
 import { signIn } from "next-auth/react"
 import { API_POST_SIGNIN, URL_CREATE_ORGANISATION } from "@/lib/routes"
+import { redirect, RedirectType } from "next/navigation"
+import { Spinner } from "../ui/spinner"
+import { useSession } from "next-auth/react"
 
 const SignIn = () => {
   const [formInput, setFormInput] = useState<signinInput>({
     email: "",
     password: "",
   })
+  const [isLoading, setIsLoading] = useState(false)
+
+  // await
+  // useEffect(() => {
+  //   const getSession = async () => {
+  //     const session = await auth()
+  //     setSession(session)
+  //   }
+
+  //   getSession()
+  // }, [])
 
   // {
   //   createdParam &&
@@ -36,17 +50,14 @@ const SignIn = () => {
   // }
 
   const handleSubmit = async () => {
-    // try {
-    //   const res = await axios.post(API_POST_SIGNIN, formInput, {})
-    // } catch (err) {
-    //   console.error(err)
-    // }
-    try {
-      console.log("Before")
-      const res = await signIn("credentials", { ...formInput, redirect: false })
-      console.log(res)
-    } catch (err) {
-      console.error(err)
+    setIsLoading(true)
+    const res = await signIn("credentials", {
+      ...formInput,
+      redirect: false,
+    })
+    setIsLoading(false)
+    if (!res.error) {
+      redirect("/org", RedirectType.replace)
     }
   }
 
@@ -84,7 +95,9 @@ const SignIn = () => {
               }
             />
           </Field>
-          <Button onClick={handleSubmit}>Sign In</Button>
+          <Button onClick={handleSubmit} disabled={isLoading}>
+            {isLoading ? <Spinner /> : "Sign In"}
+          </Button>
         </FieldGroup>
         <p className="self-center text-sm">Forgot password?</p>
         <p className="self-center text-sm">

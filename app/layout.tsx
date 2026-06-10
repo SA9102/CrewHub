@@ -4,6 +4,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { SessionProvider } from "next-auth/react"
 
 const geistHeading = Geist({ subsets: ["latin"], variable: "--font-heading" })
 
