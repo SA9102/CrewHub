@@ -1,3 +1,11 @@
+### 11th June 2026
+
+#### Worked on:
+
+- Signing in now redirects user to the dashboard of their organisation page; their organisation ID now appears in URL.
+
+---
+
 ### 10th June 2026
 
 #### Worked on:

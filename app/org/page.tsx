@@ -1,16 +1,17 @@
 import { auth } from "@/auth"
+import { redirect, RedirectType } from "next/navigation"
 
 const page = async () => {
   const session = await auth()
 
-  console.log("SESSION")
-  console.log(session)
+  if (session) {
+    redirect(
+      `/org/${session.user.organisationId}/dashboard`,
+      RedirectType.replace
+    )
+  }
 
-  return (
-    <>
-      <p>Hello</p>
-    </>
-  )
+  return <></>
 }
 
 export default page
