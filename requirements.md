@@ -32,7 +32,7 @@ Each user belongs to at least one organisation.
 
 ### 3.1 Organisation Owner
 
-- [ ] Automatically created when a user creates an organisation
+- [x] Automatically created when a user creates an organisation
 - [ ] Has full administrative access to the organisation
 - [ ] Can manage organisation settings
 - [ ] Can create, edit, and delete teams
@@ -63,10 +63,10 @@ Each user belongs to at least one organisation.
 
 ## 4. Authentication & Accounts
 
-- [ ] Users can register and log in securely
+- [x] Users can register and log in securely
 - [x] Passwords must be securely hashed
 - [ ] Sessions must persist across browser refresh
-- [ ] Users can log out securely
+- [x] Users can log out securely
 - [ ] New users create or join an organisation during signup
 - [ ] Email addresses must be unique globally
 - [ ] Invited users can join an organisation via secure invite link
@@ -75,10 +75,9 @@ Each user belongs to at least one organisation.
 
 ## 5. Organisation Management
 
-- [ ] Users can create a new organisation during registration
-- [ ] Organisations have unique identifiers
-- [ ] Users can belong to multiple organisations
-- [ ] Organisation ownership is assigned automatically on creation
+- [x] Users create a new organisation during registration
+- [x] Organisations have unique identifiers
+- [x] Organisation ownership is assigned automatically on creation
 - [ ] Organisation settings can be updated by owners/admins
 
 ---
@@ -169,7 +168,7 @@ All data must be relational and consistent.
 
 ### 12.2 Security
 
-- [ ] Passwords must be hashed securely (e.g. bcrypt or equivalent)
+- [x] Passwords must be hashed securely (e.g. bcrypt or equivalent)
 - [ ] Authentication required for all protected routes
 - [ ] Role-based access control enforced server-side
 - [ ] Input validation required on all forms

@@ -1,3 +1,12 @@
+### 12-13th June 2026
+
+#### Completed:
+
+- Redirects user to signin page from a route starting with /org if they don't have a session
+- Added a 'role' field for a user: one of USER, ADMIN and OWNER. The user that creates an organisation is automatically the owner.
+
+---
+
 ### 11th June 2026
 
 #### Worked on:

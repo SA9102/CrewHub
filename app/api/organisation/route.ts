@@ -1,3 +1,4 @@
+import { Role } from "@/generated/prisma/enums"
 import { hashAndSaltPassword } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 import { signupInput } from "@/lib/types/inputs"
@@ -89,6 +90,7 @@ export const POST = async (req: Request) => {
         email: body.email,
         password: hashedPassword,
         organisationId,
+        role: Role.OWNER,
       },
     })
 

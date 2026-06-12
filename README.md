@@ -7,6 +7,8 @@ This is a simple application that will allow small teams to:
 - schedule and manage events
 - track basic team activity
 
+This project is being built for a personal portfolio to demonstrate full-stack development skills, including testing, authentication, and API handling.
+
 ## Tech Stack
 
 - React
@@ -19,7 +21,6 @@ This is a simple application that will allow small teams to:
 ## Main Utility Libraries
 
 - Auth.js (credential authentication)
-- bcryptjs (hashing and salting passwords)
 - Vitest (test suite, very similar to Jest)
 - Resend (send emails)
 

@@ -1,9 +1,13 @@
+// This is essentially the 'signup page', where a user creates an organisation.
+
+// When creating an organisation, the user also creates an account.
+// They automatically become the owner of that organisation,
+// which can be changed later.
+
 "use client"
 
-// React imports
 import { useState } from "react"
 
-// shadcn imports
 import { Button } from "@/components/ui/button"
 import {
   Field,
@@ -32,9 +36,6 @@ import Link from "next/link"
 import { Spinner } from "../ui/spinner"
 import { API_POST_ORGANISATION } from "@/lib/routes"
 
-// When creating an organisation, a user also creates an account.
-// They automatically become the top-level admin of that organisation,
-// which can be changed later.
 const CreateOrganisation = () => {
   const [formInput, setFormInput] = useState<signupInput>({
     organisationName: "",
