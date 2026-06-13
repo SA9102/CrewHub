@@ -1,3 +1,10 @@
+### 13th June 2026
+
+- Changed session checking from a layout file to proxy.ts. Now redirects to signin page if session is revoked.
+- Adding extra logic for protecting routes in proxy file.
+
+---
+
 ### 12-13th June 2026
 
 #### Completed:

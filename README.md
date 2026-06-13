@@ -29,6 +29,14 @@ This project is being built for a personal portfolio to demonstrate full-stack d
 - Client and server components, and when to use one over the other
 - Using Vitest for integration testing - testing API routes
 
+## Helpful Resources:
+
+Some helpful resources used during development:
+
+- [Next.js authentication patterns, by a Vercel employee](https://github.com/vercel/next.js/discussions/63775)
+
+AI tools (specifically ChatGPT) were used to
+
 ## Requirements
 
 See the [requirements list](./requirements.md) for more information about what this application contains, and what to expect.

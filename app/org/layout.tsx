@@ -5,19 +5,19 @@
 // 'sign out' if logged in, or manually go to a valid/invalid org
 // via the URL if they don't have a session.
 
-import { auth } from "@/auth"
-import { redirect, RedirectType } from "next/navigation"
+// import { auth } from "@/auth"
+// import { redirect, RedirectType } from "next/navigation"
 
 const OrgLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) => {
-  const session = await auth()
+  // const session = await auth()
 
-  if (!session) {
-    redirect(`/auth/signin`, RedirectType.replace)
-  }
+  // if (!session) {
+  //   redirect(`/auth/signin`, RedirectType.replace)
+  // }
 
   return children
 }

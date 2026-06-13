@@ -13,11 +13,13 @@ declare module "next-auth" {
   interface User {
     id: string
     organisationId: string
+    role: string
   }
 
   interface Session {
     user: {
       organisationId: string
+      role: string
     } & DefaultSession["user"]
   }
 }
@@ -63,17 +65,25 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
     // GitHub,
   ],
+  pages: {
+    signIn: "/auth/signin",
+  },
   callbacks: {
+    // authorized: async ({ auth }) => {
+    //   return !!auth
+    // },
     jwt({ token, user }) {
       if (user) {
         token.id = user.id
         token.organisationId = user.organisationId
+        token.role = user.role
       }
       return token
     },
     session({ session, token }) {
       session.user.id = token.id as string
       session.user.organisationId = token.organisationId as string
+      session.user.role = token.role as string
       return session
     },
   },

@@ -1,7 +1,5 @@
 ### Development
 
-#### Sign In
-
 #### Email Invite
 
 - Include link to user creation page in email
