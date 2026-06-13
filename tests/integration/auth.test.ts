@@ -1,9 +1,10 @@
 import { BASE_URL_DEV, API_POST_ORGANISATION } from "@/lib/routes"
 import { signupInput } from "@/lib/types/inputs"
 import axios from "axios"
+import { signIn } from "next-auth/react"
 import { describe, test, it, expect } from "vitest"
 
-describe("account registration", () => {
+describe("organisation + owner creation", () => {
   it("should reject if invalid organisation name", async () => {
     const api = async (organisationName: string) => {
       // Using 'fetch' instead of 'axios', for simpler testing
@@ -216,5 +217,26 @@ describe("account registration", () => {
     expect(res.status).toBe(400)
   })
 
-  it("should create an organisation and its top-level admin if all inputs are valid", async () => {})
+  it("should create an organisation and its owner if all inputs are valid", async () => {})
+})
+
+describe("signing in", () => {
+  it("should reject if no users with such credentials exists", async () => {
+    interface input {
+      email: string
+      password: string
+    }
+
+    const api = async (input: input) => {
+      console.log(input)
+      const res = await signIn("credentials", { ...input, redirect: false })
+      console.log("Ok")
+      console.log(res)
+    }
+
+    let res = await api({ email: "a@a.com", password: "a" })
+    // console.log(res)
+  })
+
+  // it("should create a session if a user enters ")
 })

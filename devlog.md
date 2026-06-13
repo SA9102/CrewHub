@@ -1,7 +1,13 @@
 ### 13th June 2026
 
+#### Completed:
+
 - Changed session checking from a layout file to proxy.ts. Now redirects to signin page if session is revoked.
 - Adding extra logic for protecting routes in proxy file.
+
+#### Issues:
+
+- Calling 'signIn' api during testing does not work
 
 ---
 
