@@ -17,12 +17,14 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 export const POST = async (req: Request) => {
   try {
     let body = await req.json()
-    console.log(body)
     const response = await resend.emails.send({
       from: "Admin <aaa@resend.dev>",
       to: ["shayan677@gmail.com"],
       subject: "Invitation",
-      html: "<p>The admin of your organisation has invited you to create an account. <a href='http://localhost:3000/auth/signin'>Click here to create your account.</a><br />If you believe this was done in error, please ignore this email.</p>",
+      html:
+        "<p>The admin of your organisation has invited you to create an account. <a href='http://localhost:3000/auth/" +
+        body.session.user.organisationId +
+        "/create-user'>Click here to create your account.</a><br />If you believe this was done in error, please ignore this email.</p>",
     })
 
     return Response.json({ message: "Ok" }, { status: 200 })

@@ -3,16 +3,22 @@
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
-import { signIn } from "@/auth"
+import { auth, signIn } from "@/auth"
 import { useState } from "react"
 import axios from "axios"
 
-const Users = () => {
+const Users = ({ session }) => {
+  // const session = await auth()
+
   const [email, setEmail] = useState("")
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post("/api/user/send-email", { email }, {})
+      const res = await axios.post(
+        "/api/user/send-email",
+        { email, session },
+        {}
+      )
     } catch (err) {
       console.error(err)
     }

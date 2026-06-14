@@ -1,7 +1,7 @@
 import AppSidebar from "@/components/custom/AppSidebar"
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 
-const Layout = ({ children }) => {
+const layout = ({ children }) => {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -11,4 +11,4 @@ const Layout = ({ children }) => {
   )
 }
 
-export default Layout
+export default layout

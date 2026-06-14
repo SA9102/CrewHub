@@ -12,7 +12,7 @@ export const proxy = auth((req) => {
   // -- FIXME --
   if (
     req.nextUrl.pathname.includes("users") &&
-    req.auth?.user.role !== Role.ADMIN
+    req.auth?.user.role !== Role.OWNER
   ) {
     const newUrl = new URL("/auth/signin", req.nextUrl.origin)
     return Response.redirect(newUrl)

@@ -9,6 +9,8 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { Role } from "@/generated/prisma/enums"
+import { redirect, RedirectType } from "next/navigation"
+import MenuButton from "./MenuButton"
 
 const AppSidebar = async () => {
   const session = await auth()
@@ -20,7 +22,7 @@ const AppSidebar = async () => {
         <SidebarMenuItem>
           <SidebarMenuButton>Chats</SidebarMenuButton>
           {session?.user.role === Role.OWNER && (
-            <SidebarMenuButton>Users</SidebarMenuButton>
+            <MenuButton session={session} />
           )}
         </SidebarMenuItem>
       </SidebarContent>
