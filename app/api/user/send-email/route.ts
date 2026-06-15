@@ -53,9 +53,11 @@ export const POST = async (req: Request) => {
       console.log("No invite link yet")
     }
 
-    const newInviteLink = await prisma.inviteLink.create({
+    const inviteToken = await prisma.inviteToken.create({
       data: {
         email: body.email,
+        token: crypto.randomUUID(),
+        organisationId: body.session.user
         expires: Date.now() + 150000,
       },
     })

@@ -1,8 +1,24 @@
+### 15th June 2026
+
+#### Worked on:
+
+- Trying to check that an invite token is valid before a user can create an account.
+
+#### Issues:
+
+- Calling 'signIn' api during testing does not work
+
+---
+
 ### 14th June 2026
 
 #### Completed:
 
 - Now cannot send another invite link to a particular email address if previous link for that email address has not expired.
+
+#### Issues:
+
+- Calling 'signIn' api during testing does not work
 
 ---
 

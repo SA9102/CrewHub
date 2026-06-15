@@ -30,15 +30,19 @@ model Organisation {
   id   String @id @default(uuid())
   name String
 
-  users User[]
+  users        User[]
+  inviteTokens InviteToken[]
 }
 
-model InviteLink {
+model InviteToken {
   id String @id @default(uuid())
 
+  token          String       @unique
   // Don't set email to unique. An admin should be allowed to send another
   // invite link to an email address if the previous one has expired.
   // But it is possible that an expired link may not be removed the DB.
-  email   String
-  expires BigInt
+  email          String
+  organisationId String
+  organisation   Organisation @relation(fields: [organisationId], references: [id])
+  expires        BigInt
 }
