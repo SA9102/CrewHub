@@ -33,7 +33,12 @@ model Organisation {
   users User[]
 }
 
-model InviteToken {
-  id    String @id
-  email String @unique
+model InviteLink {
+  id String @id @default(uuid())
+
+  // Don't set email to unique. An admin should be allowed to send another
+  // invite link to an email address if the previous one has expired.
+  // But it is possible that an expired link may not be removed the DB.
+  email   String
+  expires BigInt
 }

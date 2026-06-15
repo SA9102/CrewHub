@@ -1,3 +1,11 @@
+### 14th June 2026
+
+#### Completed:
+
+- Now cannot send another invite link to a particular email address if previous link for that email address has not expired.
+
+---
+
 ### 13th June 2026
 
 #### Completed:

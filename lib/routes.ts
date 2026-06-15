@@ -7,3 +7,4 @@ export const URL_SIGNIN = "/auth/signin"
 // API Routes
 export const API_POST_ORGANISATION = "/api/organisation"
 export const API_POST_SIGNIN = "/api/auth/signin"
+// export const API_GET_INVITE_TOKEN = "/api/auth"

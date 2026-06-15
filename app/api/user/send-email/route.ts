@@ -1,4 +1,5 @@
 import { signIn } from "@/auth"
+import { prisma } from "@/prisma"
 
 /*
 
@@ -17,9 +18,51 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 export const POST = async (req: Request) => {
   try {
     let body = await req.json()
+
+    // Before sending an invite email, first check if there already exists
+    // an invite link in the database for that email.
+    console.log("GETTING")
+    const inviteLinks = await prisma.inviteLink.findMany({
+      where: {
+        email: body.email,
+      },
+      orderBy: {
+        expires: "desc",
+      },
+    })
+
+    const inviteLink = inviteLinks[0]
+
+    console.log("INVITE LINK")
+    console.log(inviteLink)
+
+    // If a link already exists for that email, check if it has not expired
+    // If it has not expired (i.e. if the current datetime has not passed the expiry time),
+    // then do not send a link.
+
+    // -- Link object in DB should be automatically deleted if expired --
+    if (inviteLink) {
+      console.log("Invite link has been found")
+      if (Date.now() <= inviteLink.expires) {
+        console.log("Not expired")
+        return
+      } else {
+        console.log("Expired")
+      }
+    } else {
+      console.log("No invite link yet")
+    }
+
+    const newInviteLink = await prisma.inviteLink.create({
+      data: {
+        email: body.email,
+        expires: Date.now() + 150000,
+      },
+    })
+
     const response = await resend.emails.send({
-      from: "Admin <aaa@resend.dev>",
-      to: ["shayan677@gmail.com"],
+      from: `Invite Link <admin@resend.dev>`,
+      to: [body.email],
       subject: "Invitation",
       html:
         "<p>The admin of your organisation has invited you to create an account. <a href='http://localhost:3000/auth/" +
@@ -29,6 +72,7 @@ export const POST = async (req: Request) => {
 
     return Response.json({ message: "Ok" }, { status: 200 })
   } catch (error) {
+    console.log(error)
     return Response.json(error, { status: 500 })
   }
 }
