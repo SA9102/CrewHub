@@ -1,4 +1,4 @@
-import CreateOrganisation from "@/components/custom/CreateOrganisation"
+import CreateOrganisation from "@/components/custom/pages/CreateOrganisation"
 
 const page = () => {
   return <CreateOrganisation />

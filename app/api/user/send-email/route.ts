@@ -22,19 +22,21 @@ export const POST = async (req: Request) => {
     // Before sending an invite email, first check if there already exists
     // an invite link in the database for that email.
     console.log("GETTING")
-    const inviteLinks = await prisma.inviteLink.findMany({
-      where: {
-        email: body.email,
-      },
-      orderBy: {
-        expires: "desc",
-      },
-    })
+    // const inviteLinks = await prisma.inviteLink.findMany({
+    //   where: {
+    //     email: body.email,
+    //   },
+    //   orderBy: {
+    //     expires: "desc",
+    //   },
+    // })
 
-    const inviteLink = inviteLinks[0]
+    // const inviteLink = inviteLinks[0]
 
-    console.log("INVITE LINK")
-    console.log(inviteLink)
+    // console.log("INVITE LINK")
+    // console.log(inviteLink)
+
+    const inviteLink = null
 
     // If a link already exists for that email, check if it has not expired
     // If it has not expired (i.e. if the current datetime has not passed the expiry time),
@@ -57,8 +59,8 @@ export const POST = async (req: Request) => {
       data: {
         email: body.email,
         token: crypto.randomUUID(),
-        organisationId: body.session.user
-        expires: Date.now() + 150000,
+        organisationId: body.session.user.organisationId,
+        expires: Date.now() + 20000,
       },
     })
 
@@ -68,8 +70,8 @@ export const POST = async (req: Request) => {
       subject: "Invitation",
       html:
         "<p>The admin of your organisation has invited you to create an account. <a href='http://localhost:3000/auth/" +
-        body.session.user.organisationId +
-        "/create-user'>Click here to create your account.</a><br />If you believe this was done in error, please ignore this email.</p>",
+        inviteToken.token +
+        "/create-user'>Click here to create your account.</a><br />The link will expire after 48 hours. If it has expired, please request a new invite token from your organisation admin.</a><br />If you believe this was sent in error, please ignore this email.</p>",
     })
 
     return Response.json({ message: "Ok" }, { status: 200 })

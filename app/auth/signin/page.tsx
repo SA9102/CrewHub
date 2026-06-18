@@ -1,5 +1,5 @@
 import { auth } from "@/auth"
-import SignIn from "@/components/custom/SignIn"
+import SignIn from "@/components/custom/pages/SignIn"
 
 const page = async () => {
   // const session = await auth()

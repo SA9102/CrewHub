@@ -1,4 +1,4 @@
-import CreateUser from "@/components/custom/CreateUser"
+import CreateUser from "@/components/custom/pages/CreateUser"
 
 const page = () => {
   return <CreateUser />

@@ -22,8 +22,10 @@ import { signinInput } from "@/lib/types/inputs"
 import { signIn } from "next-auth/react"
 import { API_POST_SIGNIN, URL_CREATE_ORGANISATION } from "@/lib/routes"
 import { redirect, RedirectType } from "next/navigation"
-import { Spinner } from "../ui/spinner"
+import { Spinner } from "../../ui/spinner"
 import { useSession } from "next-auth/react"
+import FormWrapper from "../FormWrapper"
+import TextInput from "../TextInput"
 
 const SignIn = () => {
   const [formInput, setFormInput] = useState<signinInput>({
@@ -62,39 +64,28 @@ const SignIn = () => {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <FieldSet className="mx-auto flex w-full max-w-sm flex-col">
+    // <div className="flex min-h-screen items-center justify-center">
+    //   <FieldSet className="mx-auto flex w-full max-w-sm flex-col">
+    <>
+      <FormWrapper>
         <H2>SIGN IN</H2>
         {/* <FieldLegend>Sign In</FieldLegend> */}
-        <FieldGroup>
-          <Field>
-            <FieldLabel htmlFor="email">Email</FieldLabel>
-            <Input
-              id="email"
-              name="email"
-              autoComplete="off"
-              aria-invalid
-              value={formInput.email}
-              onChange={(e) =>
-                setFormInput({ ...formInput, email: e.target.value })
-              }
-            />
-          </Field>
 
-          <Field>
-            <FieldLabel htmlFor="password">Password</FieldLabel>
-            <Input
-              id="password"
-              name="password"
-              type="password"
-              autoComplete="off"
-              aria-invalid
-              value={formInput.password}
-              onChange={(e) =>
-                setFormInput({ ...formInput, password: e.target.value })
-              }
-            />
-          </Field>
+        <FieldGroup>
+          <TextInput
+            label="Email"
+            type="email"
+            field="email"
+            form={formInput}
+            setForm={setFormInput}
+          />
+          <TextInput
+            label="Password"
+            type="password"
+            field="password"
+            form={formInput}
+            setForm={setFormInput}
+          />
           <Button onClick={handleSubmit} disabled={isLoading}>
             {isLoading ? <Spinner /> : "Sign In"}
           </Button>
@@ -103,9 +94,11 @@ const SignIn = () => {
         <p className="self-center text-sm">
           <Link href={URL_CREATE_ORGANISATION}>Need an account?</Link>
         </p>
-      </FieldSet>
-      <Toaster />
-    </div>
+      </FormWrapper>
+    </>
+    //   </FieldSet>
+    //   <Toaster />
+    // </div>
   )
 }
 

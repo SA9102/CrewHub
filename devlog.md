@@ -1,3 +1,13 @@
+### 18th June 2026
+
+#### Completed:
+
+- Code refactoring: reducing duplication in forms and util functions.
+- Invite token is now checked to see if it exists, and if so then if it is valid.
+- Users can now create an account from a valid link they have received, and sign in with that account.
+
+---
+
 ### 15th June 2026
 
 #### Worked on:
