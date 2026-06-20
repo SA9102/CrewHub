@@ -43,17 +43,17 @@ export const POST = async (req: Request) => {
     // then do not send a link.
 
     // -- Link object in DB should be automatically deleted if expired --
-    if (inviteLink) {
-      console.log("Invite link has been found")
-      if (Date.now() <= inviteLink.expires) {
-        console.log("Not expired")
-        return
-      } else {
-        console.log("Expired")
-      }
-    } else {
-      console.log("No invite link yet")
-    }
+    // if (inviteLink) {
+    //   console.log("Invite link has been found")
+    //   if (Date.now() <= inviteLink.expires) {
+    //     console.log("Not expired")
+    //     return
+    //   } else {
+    //     console.log("Expired")
+    //   }
+    // } else {
+    //   console.log("No invite link yet")
+    // }
 
     const inviteToken = await prisma.inviteToken.create({
       data: {

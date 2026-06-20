@@ -1,7 +1,12 @@
 import AppSidebar from "@/components/custom/AppSidebar"
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import React from "react"
 
-const layout = ({ children }) => {
+interface props {
+  children: React.ReactNode
+}
+
+const layout = ({ children }: props) => {
   return (
     <SidebarProvider>
       <AppSidebar />

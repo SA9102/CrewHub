@@ -1,9 +1,14 @@
 "use client"
 
+import { Session } from "next-auth"
 import { SidebarMenuButton } from "../ui/sidebar"
 import { redirect, RedirectType } from "next/navigation"
 
-const MenuButton = ({ session }) => {
+interface props {
+  session: Session
+}
+
+const MenuButton = ({ session }: props) => {
   return (
     <SidebarMenuButton
       onClick={() => {

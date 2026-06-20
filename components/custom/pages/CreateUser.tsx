@@ -24,6 +24,11 @@ interface createUserInput {
   confirmPassword: string
 }
 
+interface tokenData {
+  email: string
+  organisationId: string
+}
+
 const CreateUser = () => {
   const [formInput, setFormInput] = useState<createUserInput>({
     firstName: "",
@@ -35,32 +40,34 @@ const CreateUser = () => {
   const [isLoadingPage, setIsLoadingPage] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
-  const [tokenData, setTokenData] = useState(null)
+  const [tokenData, setTokenData] = useState<null | tokenData>(null)
   const params = useParams<{ orgId: string }>()
 
   console.log(params)
 
   const handleSubmit = async () => {
-    setIsLoading(true)
-    try {
-      const res = await axios.post(
-        API_POST_CREATE_USER,
-        { ...formInput, organisationId: tokenData.organisationId },
-        {}
-      )
-      if (res.status === 201) {
-        // router.replace("/auth/signin?created=true")
+    if (tokenData) {
+      setIsLoading(true)
+      try {
+        const res = await axios.post(
+          API_POST_CREATE_USER,
+          { ...formInput, organisationId: tokenData.organisationId },
+          {}
+        )
+        if (res.status === 201) {
+          // router.replace("/auth/signin?created=true")
 
-        console.log("Success")
+          console.log("Success")
+        }
+      } catch (err: any) {
+        if (err.response.data) {
+          setErrorMessage(err.response.data.error)
+        } else {
+          setErrorMessage("An error occurred")
+        }
+      } finally {
+        setIsLoading(false)
       }
-    } catch (err: any) {
-      if (err.response.data) {
-        setErrorMessage(err.response.data.error)
-      } else {
-        setErrorMessage("An error occurred")
-      }
-    } finally {
-      setIsLoading(false)
     }
   }
 

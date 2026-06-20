@@ -67,9 +67,9 @@ Each user belongs to at least one organisation.
 - [x] Passwords must be securely hashed
 - [ ] Sessions must persist across browser refresh
 - [x] Users can log out securely
-- [ ] New users create or join an organisation during signup
+- [x] New users create or join an organisation during signup
 - [ ] Email addresses must be unique globally
-- [ ] Invited users can join an organisation via secure invite link
+- [x] Invited users can join an organisation via secure invite link
 
 ---
 
