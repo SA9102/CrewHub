@@ -13,7 +13,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@netlify/plugin-nextjs": "^5.15.12",
+    "@netlify/next": "^1.4.9",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "@prisma/extension-accelerate": "^3.0.1",
