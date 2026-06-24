@@ -24,15 +24,20 @@ This project is being built for a personal portfolio to demonstrate full-stack d
 - Vitest (test suite, very similar to Jest)
 - Resend (send emails)
 
-## Concepts learned:
+## Concepts learned
 
 - Client and server components, and when to use one over the other
 - Using Vitest for integration testing - testing API routes
 
-## Helpful Resources:
+## Notes
+
+- Will keep application relatively simple for now (e.g. no users managing other users), but will likely expand functionality and scope later on.
+
+## Helpful Resources
 
 Some helpful resources used during development:
 
+- [Building APIs with Next.js](https://nextjs.org/blog/building-apis-with-nextjs)
 - [Next.js authentication patterns, by a Vercel employee](https://github.com/vercel/next.js/discussions/63775)
 
 ## Requirements

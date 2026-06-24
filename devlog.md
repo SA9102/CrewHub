@@ -1,3 +1,23 @@
+### 24th June 2026
+
+#### Completed:
+
+- Added new model: Team.
+- Added m-n relationship between User and Team.
+- Currently implementing feature for owner to create a team - enter a name, and choose a list of users to add.
+
+---
+
+### 22nd June 2026
+
+#### Completed:
+
+- The owner can view a list of all users in the organisation. Can view their email address, first name, last name and role.
+- Can delete a user (except their own).
+- (Layout may change in the future).
+
+---
+
 ### 20th June 2026
 
 #### Completed:

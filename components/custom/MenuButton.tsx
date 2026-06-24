@@ -6,19 +6,21 @@ import { redirect, RedirectType } from "next/navigation"
 
 interface props {
   session: Session
+  text: string
+  finalPath: string
 }
 
-const MenuButton = ({ session }: props) => {
+const MenuButton = ({ session, text, finalPath }: props) => {
   return (
     <SidebarMenuButton
       onClick={() => {
         redirect(
-          `/org/${session!.user.organisationId}/users`,
+          `/org/${session!.user.organisationId}/${finalPath}`,
           RedirectType.push
         )
       }}
     >
-      Users
+      {text}
     </SidebarMenuButton>
   )
 }

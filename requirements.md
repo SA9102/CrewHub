@@ -36,7 +36,7 @@ Each user belongs to at least one organisation.
 - [ ] Has full administrative access to the organisation
 - [ ] Can manage organisation settings
 - [ ] Can create, edit, and delete teams
-- [ ] Can invite and remove users
+- [x] Can invite and remove users
 - [ ] Can assign and change user roles
 - [ ] Can transfer ownership to another user
 
@@ -96,8 +96,8 @@ Each user belongs to at least one organisation.
 
 - [ ] Users are linked to organisations via membership records
 - [ ] Each membership includes a role (owner, admin, member)
-- [ ] Users must accept invitations before joining an organisation
-- [ ] Invitations are sent via email with secure tokens
+- [x] Users must accept invitations before joining an organisation
+- [x] Invitations are sent via email with secure tokens
 - [ ] Invitations can be revoked by admins
 - [ ] Removed users immediately lose access
 
