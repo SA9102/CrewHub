@@ -20,12 +20,13 @@ import {
 } from "@/components/ui/combobox"
 import axios from "axios"
 import { Button } from "@/components/ui/button"
+import { redirect, RedirectType } from "next/navigation"
 
 interface props {
   session: Session
 }
 
-interface members {
+interface user {
   id: string
   firstName: string
   lastName: string
@@ -33,7 +34,7 @@ interface members {
 
 interface formInput {
   name: string
-  members: members[]
+  members: string[]
 }
 
 // Provides a form for the owner to create a team
@@ -42,7 +43,7 @@ const CreateTeam = ({ session }: props) => {
     name: "",
     members: [],
   })
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState<user[]>([])
 
   useEffect(() => {
     const getUsers = async () => {
@@ -74,6 +75,10 @@ const CreateTeam = ({ session }: props) => {
       const res = await axios.post(`/api/${session.user.organisationId}/team`, {
         data: formInput,
       })
+      if (res.status === 200) {
+        console.log("OK")
+        redirect(`/org/${session.user.organisationId}/teams`, RedirectType.push)
+      }
     } catch (err) {
       console.error(err)
     }
@@ -102,12 +107,11 @@ const CreateTeam = ({ session }: props) => {
           >
             <ComboboxChips>
               <ComboboxValue>
-                {formInput.members.map((member) => {
-                  console.log("Member:")
-                  console.log(member)
+                {formInput.members.map((memberId) => {
+                  const user = users.find((user) => user.id === memberId)
                   return (
-                    <ComboboxChip key={member.id}>
-                      {member.firstName} {member.lastName}
+                    <ComboboxChip key={memberId}>
+                      {user!.firstName} {user!.lastName}
                     </ComboboxChip>
                   )
                 })}

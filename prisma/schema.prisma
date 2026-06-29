@@ -34,7 +34,7 @@ model Organisation {
 
   users        User[]
   inviteTokens InviteToken[]
-  teams        OrganisationsOnTeams[]
+  teams        Team[]
 }
 
 model InviteToken {
@@ -51,10 +51,11 @@ model InviteToken {
 }
 
 model Team {
-  id            String                 @id @default(uuid())
-  name          String
-  users         UsersOnTeams[]
-  organisations OrganisationsOnTeams[]
+  id             String         @id @default(uuid())
+  name           String
+  users          UsersOnTeams[]
+  organisationId String
+  organisation   Organisation   @relation(fields: [organisationId], references: [id])
 }
 
 model UsersOnTeams {
@@ -64,13 +65,4 @@ model UsersOnTeams {
   teamId String
 
   @@id([userId, teamId])
-}
-
-model OrganisationsOnTeams {
-  organisation   Organisation @relation(fields: [organisationId], references: [id])
-  organisationId String
-  team           Team         @relation(fields: [teamId], references: [id])
-  teamId         String
-
-  @@id([organisationId, teamId])
 }

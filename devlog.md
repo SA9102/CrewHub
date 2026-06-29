@@ -1,3 +1,19 @@
+### 29th June 2026
+
+- Focused on adding tests.
+- Added test that checks if organisation and user is created in database, and checks their values.
+
+---
+
+### 25th June 2026
+
+#### Completed
+
+- Owner can create a team - enter a name, and choose a list of users to add.
+- Owner can delete a team.
+
+---
+
 ### 24th June 2026
 
 #### Completed:

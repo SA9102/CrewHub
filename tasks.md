@@ -1,5 +1,18 @@
 ### Development
 
+#### General
+
+Ensure:
+
+- Responsive design
+- Clean UI
+- Types from Prisma
+- Reduce code repetition
+
+#### Prisma
+
+- Check your logic for creating objects that involve relations
+
 #### Org creation
 
 - Verify through email before creating it
