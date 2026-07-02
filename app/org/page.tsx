@@ -5,10 +5,7 @@ const page = async () => {
   const session = await auth()
 
   if (session) {
-    redirect(
-      `/org/${session.user.organisationId}/dashboard`,
-      RedirectType.replace
-    )
+    redirect(`/org/dashboard`, RedirectType.replace)
   }
 
   return <></>

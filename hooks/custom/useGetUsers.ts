@@ -8,7 +8,7 @@ const useGetUsers = (session: Session) => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const res = await axios.get(`/api/${session.user.organisationId}/users`)
+        const res = await axios.get(`/api/users`)
         if (res.status === 200) {
           console.log(res.data)
           setUsers(res.data)

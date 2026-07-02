@@ -14,10 +14,7 @@ const MenuButton = ({ session, text, finalPath }: props) => {
   return (
     <SidebarMenuButton
       onClick={() => {
-        redirect(
-          `/org/${session!.user.organisationId}/${finalPath}`,
-          RedirectType.push
-        )
+        redirect(`/org/${finalPath}`, RedirectType.push)
       }}
     >
       {text}

@@ -75,9 +75,7 @@ const Users = ({ session }: props) => {
   const handleDeleteUser = async (userId: string) => {
     if (session) {
       try {
-        const res = await axios.delete(
-          `/api/${session.user.organisationId}/user/${userId}`
-        )
+        const res = await axios.delete(`/api/user/${userId}`)
         if (res.status === 204) {
           console.log("HAS BEEN DELETED")
           let newUsers = [...users]
@@ -95,9 +93,7 @@ const Users = ({ session }: props) => {
       setIsLoadingUsers(true)
       const getUsers = async () => {
         try {
-          const res = await axios.get(
-            `/api/${session.user.organisationId}/users`
-          )
+          const res = await axios.get(`/api/users`)
           if (res.status === 200) {
             console.log(res.data)
             setUsers(res.data)

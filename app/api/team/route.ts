@@ -1,16 +1,13 @@
+import { auth } from "@/auth"
 import { prisma } from "@/prisma"
 import { NextRequest } from "next/server"
 
-export const GET = async (
-  req: Request,
-  { params }: { params: Promise<{ orgId: string }> }
-) => {
+export const GET = async (req: Request) => {
   try {
-    const orgId = (await params).orgId
-
+    const session = await auth()
     const teams = await prisma.team.findMany({
       where: {
-        organisationId: orgId,
+        organisationId: session?.user.organisationId,
       },
     })
     return Response.json(teams, { status: 200 })
@@ -19,18 +16,16 @@ export const GET = async (
   }
 }
 
-export const POST = async (
-  req: Request,
-  { params }: { params: Promise<{ orgId: string }> }
-) => {
+// Create an organisation
+export const POST = async (req: Request) => {
   try {
-    const orgId = (await params).orgId
+    const session = await auth()
     const body = (await req.json()).data
     // console.log(body)
     await prisma.team.create({
       data: {
         name: body.name,
-        organisationId: orgId,
+        organisationId: session?.user.organisationId,
         users: {
           create: body.members.map((userId: string) => ({
             user: {

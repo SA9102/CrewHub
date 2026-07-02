@@ -17,7 +17,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export const POST = async (req: Request) => {
   try {
-    let body = await req.json()
+    // let body = await req.json()
 
     // Before sending an invite email, first check if there already exists
     // an invite link in the database for that email.
@@ -55,24 +55,24 @@ export const POST = async (req: Request) => {
     //   console.log("No invite link yet")
     // }
 
-    const inviteToken = await prisma.inviteToken.create({
-      data: {
-        email: body.email,
-        token: crypto.randomUUID(),
-        organisationId: body.session.user.organisationId,
-        expires: Date.now() + 20000,
-      },
-    })
+    // const inviteToken = await prisma.inviteToken.create({
+    //   data: {
+    //     email: body.email,
+    //     token: crypto.randomUUID(),
+    //     organisationId: body.session.user.organisationId,
+    //     expires: Date.now() + 20000,
+    //   },
+    // })
 
-    const response = await resend.emails.send({
-      from: `Invite Link <admin@resend.dev>`,
-      to: [body.email],
-      subject: "Invitation",
-      html:
-        "<p>The admin of your organisation has invited you to create an account. <a href='http://localhost:3000/auth/" +
-        inviteToken.token +
-        "/create-user'>Click here to create your account.</a><br />The link will expire after 48 hours. If it has expired, please request a new invite token from your organisation admin.</a><br />If you believe this was sent in error, please ignore this email.</p>",
-    })
+    // const response = await resend.emails.send({
+    //   from: `Invite Link <admin@resend.dev>`,
+    //   to: [body.email],
+    //   subject: "Invitation",
+    //   html:
+    //     "<p>The admin of your organisation has invited you to create an account. <a href='http://localhost:3000/auth/" +
+    //     inviteToken.token +
+    //     "/create-user'>Click here to create your account.</a><br />The link will expire after 48 hours. If it has expired, please request a new invite token from your organisation admin.</a><br />If you believe this was sent in error, please ignore this email.</p>",
+    // })
 
     return Response.json({ message: "Ok" }, { status: 200 })
   } catch (error) {

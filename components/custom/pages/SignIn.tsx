@@ -53,10 +53,8 @@ const SignIn = () => {
 
   const handleSubmit = async () => {
     setIsLoading(true)
-    const res = await signIn("credentials", {
-      ...formInput,
-      redirect: false,
-    })
+    // const res = await axios.post(`/api/auth/signin`, formInput)
+    const res = await signIn("credentials", { ...formInput, redirect: false })
     setIsLoading(false)
     if (!res.error) {
       redirect("/org", RedirectType.replace)

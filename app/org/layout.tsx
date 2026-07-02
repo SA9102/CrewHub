@@ -1,5 +1,8 @@
 // The root layout of all routes starting with /org
 
+import AppSidebar from "@/components/custom/AppSidebar"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+
 // All this layout does is redirect the user to the signin page
 // if they don't have a valid session. This occurs if they click
 // 'sign out' if logged in, or manually go to a valid/invalid org
@@ -19,7 +22,13 @@ const OrgLayout = async ({
   //   redirect(`/auth/signin`, RedirectType.replace)
   // }
 
-  return children
+  return (
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarTrigger />
+      <div className="flex flex-col gap-5">{children}</div>
+    </SidebarProvider>
+  )
 }
 
 export default OrgLayout

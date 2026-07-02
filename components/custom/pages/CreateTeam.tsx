@@ -48,7 +48,7 @@ const CreateTeam = ({ session }: props) => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const res = await axios.get(`/api/${session.user.organisationId}/users`)
+        const res = await axios.get(`/api/users`)
         if (res.status === 200) {
           console.log(res.data)
           const data = res.data.map((data) => {
@@ -72,12 +72,12 @@ const CreateTeam = ({ session }: props) => {
 
   const handleCreateTeam = async () => {
     try {
-      const res = await axios.post(`/api/${session.user.organisationId}/team`, {
+      const res = await axios.post(`/api/team`, {
         data: formInput,
       })
       if (res.status === 200) {
         console.log("OK")
-        redirect(`/org/${session.user.organisationId}/teams`, RedirectType.push)
+        redirect(`/org/teams`, RedirectType.push)
       }
     } catch (err) {
       console.error(err)

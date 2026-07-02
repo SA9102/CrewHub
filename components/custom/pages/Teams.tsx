@@ -29,6 +29,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table"
+import { Role } from "@/generated/prisma/enums"
 import axios from "axios"
 import { EllipsisIcon } from "lucide-react"
 import { Session } from "next-auth"
@@ -45,9 +46,7 @@ const Teams = ({ session }: props) => {
 
   const handleDeleteTeam = async (teamId: string) => {
     try {
-      const res = await axios.delete(
-        `/api/${session.user.organisationId}/team/${teamId}`
-      )
+      const res = await axios.delete(`/api/team/${teamId}`)
       console.log(res)
       if (res.status === 200) {
         console.log("HAS BEEN DELETED")
@@ -64,7 +63,7 @@ const Teams = ({ session }: props) => {
     setIsLoadingTeams(true)
     const getTeams = async () => {
       try {
-        const res = await axios.get(`/api/${session.user.organisationId}/team`)
+        const res = await axios.get(`/api/teams`)
         if (res.status === 200) {
           console.log(res.data)
           setTeams(res.data)
@@ -81,16 +80,12 @@ const Teams = ({ session }: props) => {
   return (
     <>
       <p>Teams page</p>
-      <Button
-        onClick={() =>
-          redirect(
-            `/org/${session.user.organisationId}/teams/new`,
-            RedirectType.push
-          )
-        }
-      >
-        Create Team
-      </Button>
+      {session.user.role === Role.OWNER && (
+        <Button onClick={() => redirect(`/org/teams/new`, RedirectType.push)}>
+          Create Team
+        </Button>
+      )}
+
       <Table>
         <TableHeader>
           <TableRow>
@@ -105,7 +100,12 @@ const Teams = ({ session }: props) => {
           {/* {isLoadingUsers && <Spinner />} */}
           {teams &&
             teams.map((team) => (
-              <TableRow className="cursor-pointer">
+              <TableRow
+                className="cursor-pointer"
+                onClick={() =>
+                  redirect(`/org/team/${team.id}`, RedirectType.push)
+                }
+              >
                 <TableCell>{team.name}</TableCell>
                 {/* <TableCell>{user.firstName}</TableCell>
                 <TableCell>{user.lastName}</TableCell>

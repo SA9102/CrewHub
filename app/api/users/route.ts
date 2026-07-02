@@ -1,17 +1,15 @@
+import { auth } from "@/auth"
 import { prisma } from "@/prisma"
 import { NextRequest } from "next/server"
 
-export const GET = async (
-  req: Request,
-  { params }: { params: Promise<{ orgId: string }> }
-) => {
+// Get many users
+export const GET = async (req: Request) => {
   try {
-    const orgId = (await params).orgId
-    console.log(orgId)
+    const session = await auth()
 
     const users = await prisma.user.findMany({
       where: {
-        organisationId: orgId,
+        organisationId: session?.user.organisationId,
       },
       omit: {
         password: true,

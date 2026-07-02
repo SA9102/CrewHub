@@ -1,7 +1,21 @@
+### 2nd July 2026
+
+- Refactored the API URLs - now cleaner, as session is now retrieved from inside API file.
+- Refactored the browser URLS - organisation ID removed as it was deemed unnecessary.
+- Owners can see a list of all teams available in the organisation; users can see a list of only the teams they are in.
+- Creating team page, where a user can view the team information and other members (not finished)
+
+### 1st July 2026
+
+- Added more tests.
+
+---
+
 ### 29th June 2026
 
 - Focused on adding tests.
 - Added test that checks if organisation and user is created in database, and checks their values.
+- Fixed testing issue where querying an object directly using Prisma was not retrieving the object. Solution was to set up a config file for tests, which loaded the database URL from the environment variables.
 
 ---
 

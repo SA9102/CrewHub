@@ -1,5 +1,7 @@
+import { prisma } from "@/prisma"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { verifyPassword } from "./auth"
 
 export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs))

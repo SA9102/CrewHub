@@ -24,9 +24,9 @@ const AppSidebar = async () => {
           {session?.user.role === Role.OWNER && (
             <>
               <MenuButton text="Users" finalPath="users" session={session} />
-              <MenuButton text="Teams" finalPath="teams" session={session} />
             </>
           )}
+          <MenuButton text="Teams" finalPath="teams" session={session} />
         </SidebarMenuItem>
       </SidebarContent>
       <SidebarFooter />
