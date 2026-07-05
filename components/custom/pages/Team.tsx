@@ -4,7 +4,9 @@ import { Role } from "@/generated/prisma/enums"
 import axios from "axios"
 import { Session } from "next-auth"
 import { useParams, useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { H2 } from "@/components/ui/typography"
+import { Button } from "@/components/ui/button"
 
 interface props {
   session: Session
@@ -12,6 +14,7 @@ interface props {
 
 const Team = ({ session }: props) => {
   // Make sure the user is authorised to view this team
+  const [teamName, setTeamName] = useState("")
   const params = useParams()
   const teamId = params.teamId
 
@@ -22,7 +25,7 @@ const Team = ({ session }: props) => {
       try {
         const res = await axios.get(`/api/team/${teamId}`)
         if (res.status === 200) {
-          console.log(res.data)
+          setTeamName(res.data.name)
         }
       } catch (err) {
         console.error(err)
@@ -34,7 +37,18 @@ const Team = ({ session }: props) => {
 
   return (
     <>
-      <p>Team page</p>
+      {/* <H2>{teamName}</H2>
+      <div className="flex gap-3">
+        <Button className="bg-neutral-800" variant="ghost" size="xs">
+          Chat
+        </Button>
+        <Button variant="ghost" size="xs">
+          Events
+        </Button>
+        <Button variant="ghost" size="xs">
+          Members
+        </Button>
+      </div> */}
     </>
   )
 }

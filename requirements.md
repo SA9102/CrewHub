@@ -54,10 +54,10 @@ Each user belongs to at least one organisation.
 
 ### 3.3 Member
 
-- [ ] Can view assigned teams
+- [x] Can view assigned teams
 - [ ] Can participate in messaging
 - [ ] Can view events and calendars
-- [ ] Cannot manage users or organisation settings
+- [x] Cannot manage users or organisation settings
 
 ---
 
@@ -68,7 +68,7 @@ Each user belongs to at least one organisation.
 - [ ] Sessions must persist across browser refresh
 - [x] Users can log out securely
 - [x] New users create or join an organisation during signup
-- [ ] Email addresses must be unique globally
+- [x] Email addresses must be unique globally
 - [x] Invited users can join an organisation via secure invite link
 
 ---
@@ -84,17 +84,17 @@ Each user belongs to at least one organisation.
 
 ## 6. Team Management
 
-- [ ] Organisations can contain multiple teams
-- [ ] Teams belong to a single organisation
-- [ ] Users can be assigned to multiple teams
-- [ ] Teams have unique identifiers
+- [x] Organisations can contain multiple teams
+- [x] Teams belong to a single organisation
+- [x] Users can be assigned to multiple teams
+- [x] Teams have unique identifiers
 - [ ] Teams are used to organise messaging and events
 
 ---
 
 ## 7. Memberships & Invitations
 
-- [ ] Users are linked to organisations via membership records
+- [x] Users are linked to organisations via membership records
 - [ ] Each membership includes a role (owner, admin, member)
 - [x] Users must accept invitations before joining an organisation
 - [x] Invitations are sent via email with secure tokens

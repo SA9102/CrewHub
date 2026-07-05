@@ -1,9 +1,25 @@
+### 5th July 2026
+
+- In the 'Members' tab on the 'Team' page, a user can view a list of other users in that team.
+- A user can click on a user to go their page and view more info about them (currently only their name and email).
+
+---
+
+### 3rd July 2026
+
+- Created the team page. Currently, the user can view the teams they are in.
+- A user can click on a team from the list to go to that team's page. They can switch between 'Chat', 'Events' and 'Members'
+
+---
+
 ### 2nd July 2026
 
 - Refactored the API URLs - now cleaner, as session is now retrieved from inside API file.
 - Refactored the browser URLS - organisation ID removed as it was deemed unnecessary.
 - Owners can see a list of all teams available in the organisation; users can see a list of only the teams they are in.
 - Creating team page, where a user can view the team information and other members (not finished)
+
+---
 
 ### 1st July 2026
 

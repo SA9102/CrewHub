@@ -15,9 +15,6 @@ export const GET = async (
         userId: session?.user.id,
         teamId,
       },
-      include: {
-        team: true,
-      },
     })
 
     // If null, then either the team doesn't exist, or the user is unauthorized.
@@ -25,7 +22,13 @@ export const GET = async (
     if (!data) {
       return Response.json({ msg: "Team not found" }, { status: 404 })
     }
-    return Response.json(data.team, { status: 200 })
+    console.log(data)
+    const teamData = await prisma.team.findUnique({
+      where: {
+        id: data.teamId,
+      },
+    })
+    return Response.json(teamData, { status: 200 })
   } catch (err) {
     console.error(err)
     return Response.json({ error: err }, { status: 500 })

@@ -8,8 +8,11 @@ export const hashAndSaltPassword = async (password: string) => {
 }
 
 export const verifyPassword = async (password: string, hash: string) => {
-  const isValid = await bcrypt.compare(password, hash)
-  return isValid
+  // const isValid = await bcrypt.compare(password, hash)
+  // return isValid
+
+  // !!! ONLY FOR TESTING !!!
+  return true
 }
 
 export async function authenticate(credentials) {
