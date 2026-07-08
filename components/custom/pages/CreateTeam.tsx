@@ -72,7 +72,7 @@ const CreateTeam = ({ session }: props) => {
 
   const handleCreateTeam = async () => {
     try {
-      const res = await axios.post(`/api/team`, {
+      const res = await axios.post(`/api/teams`, {
         data: formInput,
       })
       if (res.status === 200) {

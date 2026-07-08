@@ -29,7 +29,7 @@ const MembersList = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const res = await axios.get(`/api/team/${teamId}/users`)
+        const res = await axios.get(`/api/teams/${teamId}/users`)
         if (res.status === 200) {
           setMembers(res.data)
         }
@@ -59,7 +59,7 @@ const MembersList = () => {
               <TableRow
                 className="cursor-pointer"
                 onClick={() =>
-                  redirect(`/org/user/${member.id}`, RedirectType.push)
+                  redirect(`/org/users/${member.id}`, RedirectType.push)
                 }
               >
                 <TableCell>{member.firstName}</TableCell>

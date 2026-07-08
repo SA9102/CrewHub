@@ -25,7 +25,8 @@ model User {
   organisationId String
   organisation   Organisation @relation(fields: [organisationId], references: [id])
 
-  teams UsersOnTeams[]
+  teams  UsersOnTeams[]
+  events Event[]
 }
 
 model Organisation {
@@ -56,6 +57,7 @@ model Team {
   users          UsersOnTeams[]
   organisationId String
   organisation   Organisation   @relation(fields: [organisationId], references: [id])
+  events         Event[]
 }
 
 model UsersOnTeams {
@@ -65,4 +67,17 @@ model UsersOnTeams {
   teamId String
 
   @@id([userId, teamId])
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  start       DateTime
+  end         DateTime
+
+  organiserId String
+  user        User   @relation(fields: [organiserId], references: [id])
+  teamId      String
+  team        Team   @relation(fields: [teamId], references: [id])
 }

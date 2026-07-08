@@ -26,7 +26,7 @@ const OrgLayout = async ({
     <SidebarProvider>
       <AppSidebar />
       <SidebarTrigger />
-      <div className="flex flex-col gap-5">{children}</div>
+      <div className="flex flex-col gap-5 p-5">{children}</div>
     </SidebarProvider>
   )
 }

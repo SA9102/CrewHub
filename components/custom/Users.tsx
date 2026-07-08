@@ -63,7 +63,7 @@ const Users = ({ session }: props) => {
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        "/api/user/send-email",
+        "/api/users/send-email",
         { email, session },
         {}
       )
@@ -75,9 +75,8 @@ const Users = ({ session }: props) => {
   const handleDeleteUser = async (userId: string) => {
     if (session) {
       try {
-        const res = await axios.delete(`/api/user/${userId}`)
+        const res = await axios.delete(`/api/users/${userId}`)
         if (res.status === 204) {
-          console.log("HAS BEEN DELETED")
           let newUsers = [...users]
           newUsers = newUsers.filter((user) => user.id !== userId)
           setUsers([...users].filter((user) => user.id !== userId))

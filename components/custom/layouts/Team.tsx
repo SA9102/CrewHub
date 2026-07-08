@@ -58,7 +58,7 @@ const Team = ({ session }: props) => {
           variant="ghost"
           size="xs"
           onClick={() =>
-            redirect(`/org/team/${team.id}/chat`, RedirectType.replace)
+            redirect(`/org/teams/${team.id}/chat`, RedirectType.replace)
           }
         >
           Chat
@@ -68,7 +68,7 @@ const Team = ({ session }: props) => {
           variant="ghost"
           size="xs"
           onClick={() =>
-            redirect(`/org/team/${team.id}/events`, RedirectType.replace)
+            redirect(`/org/teams/${team.id}/events`, RedirectType.replace)
           }
         >
           Events
@@ -78,7 +78,7 @@ const Team = ({ session }: props) => {
           variant="ghost"
           size="xs"
           onClick={() =>
-            redirect(`/org/team/${team.id}/members`, RedirectType.replace)
+            redirect(`/org/teams/${team.id}/members`, RedirectType.replace)
           }
         >
           Members

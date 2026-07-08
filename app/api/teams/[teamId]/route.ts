@@ -8,27 +8,25 @@ export const GET = async (
 ) => {
   try {
     const session = await auth()
+
+    if (!session?.user.id) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
     const teamId = (await params).teamId
 
-    const data = await prisma.usersOnTeams.findFirst({
+    // Get the team data, but only on the condition that the user is authorized - that is, the user
+    // actually belongs in the team. If not then throw an error.
+    const data = await prisma.usersOnTeams.findFirstOrThrow({
       where: {
         userId: session?.user.id,
         teamId,
       },
-    })
-
-    // If null, then either the team doesn't exist, or the user is unauthorized.
-    // Either way, return a 404 Not Found error, for security
-    if (!data) {
-      return Response.json({ msg: "Team not found" }, { status: 404 })
-    }
-    console.log(data)
-    const teamData = await prisma.team.findUnique({
-      where: {
-        id: data.teamId,
+      include: {
+        team: true,
       },
     })
-    return Response.json(teamData, { status: 200 })
+    return Response.json(data.team, { status: 200 })
   } catch (err) {
     console.error(err)
     return Response.json({ error: err }, { status: 500 })

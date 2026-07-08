@@ -23,7 +23,7 @@ const Team = ({ session }: props) => {
   useEffect(() => {
     const getTeamData = async () => {
       try {
-        const res = await axios.get(`/api/team/${teamId}`)
+        const res = await axios.get(`/api/teams/${teamId}`)
         if (res.status === 200) {
           setTeamName(res.data.name)
         }

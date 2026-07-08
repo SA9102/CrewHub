@@ -39,6 +39,7 @@ Some helpful resources used during development:
 
 - [Building APIs with Next.js](https://nextjs.org/blog/building-apis-with-nextjs)
 - [Next.js authentication patterns, by a Vercel employee](https://github.com/vercel/next.js/discussions/63775)
+- [Microsoft's standards for RESTful web API design](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 
 ## Requirements
 

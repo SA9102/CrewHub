@@ -46,7 +46,7 @@ const Teams = ({ session }: props) => {
 
   const handleDeleteTeam = async (teamId: string) => {
     try {
-      const res = await axios.delete(`/api/team/${teamId}`)
+      const res = await axios.delete(`/api/teams/${teamId}`)
       console.log(res)
       if (res.status === 200) {
         console.log("HAS BEEN DELETED")
@@ -103,7 +103,7 @@ const Teams = ({ session }: props) => {
               <TableRow
                 className="cursor-pointer"
                 onClick={() =>
-                  redirect(`/org/team/${team.id}`, RedirectType.push)
+                  redirect(`/org/teams/${team.id}`, RedirectType.push)
                 }
               >
                 <TableCell>{team.name}</TableCell>

@@ -43,3 +43,29 @@ export const GET = async (req: Request) => {
     return Response.json({ error: err }, { status: 500 })
   }
 }
+
+// Create a team
+export const POST = async (req: Request) => {
+  try {
+    const session = await auth()
+    const body = (await req.json()).data
+    // console.log(body)
+    await prisma.team.create({
+      data: {
+        name: body.name,
+        organisationId: session?.user.organisationId,
+        users: {
+          create: body.members.map((userId: string) => ({
+            user: {
+              connect: { id: userId },
+            },
+          })),
+        },
+      },
+    })
+    console.log("RETURNING")
+    return Response.json({ status: 200 })
+  } catch (err) {
+    return Response.json({ error: err }, { status: 500 })
+  }
+}

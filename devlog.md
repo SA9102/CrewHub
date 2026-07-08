@@ -1,3 +1,12 @@
+### 8th July 2026
+
+- Created an 'Event' model, that holds information about a scheduled activity for a particular team.
+- In the 'Events' tab on a team, a user can view a list of all scheduled events for that team and its information (provided they are authorized)
+- Adjusted frontend and backend URLS to make them cleaner. I used Microsoft's RESTful API convention for the backend - see [README.md](./README.md) >> Helpful Resources for the link. For example, instead of /org/team/[teamId], it is now /org/teams/[teamId]; and instead of /api/team/[teamId], it is now /api/teams/[teamId].
+- Currently developing page for creating an event.
+
+---
+
 ### 5th July 2026
 
 - In the 'Members' tab on the 'Team' page, a user can view a list of other users in that team.

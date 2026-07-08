@@ -20,7 +20,7 @@ const User = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const res = await axios.get(`/api/user/${userId}`)
+        const res = await axios.get(`/api/users/${userId}`)
         if (res.status === 200) {
           setUser(res.data)
         }
