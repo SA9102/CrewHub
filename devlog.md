@@ -1,3 +1,9 @@
+### 12th July 2026
+
+- Can create an event. An event currently holds a name, description, start datetime and end datetime.
+
+---
+
 ### 8th July 2026
 
 - Created an 'Event' model, that holds information about a scheduled activity for a particular team.

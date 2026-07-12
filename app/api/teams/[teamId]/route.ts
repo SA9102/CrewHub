@@ -15,17 +15,23 @@ export const GET = async (
 
     const teamId = (await params).teamId
 
+    console.log(session.user.id)
+    console.log(teamId)
+
     // Get the team data, but only on the condition that the user is authorized - that is, the user
     // actually belongs in the team. If not then throw an error.
-    const data = await prisma.usersOnTeams.findFirstOrThrow({
-      where: {
-        userId: session?.user.id,
-        teamId,
-      },
-      include: {
-        team: true,
-      },
-    })
+    // const data = await prisma.usersOnTeams.findFirst({
+    //   where: {
+    //     userId: session?.user.id,
+    //     teamId,
+    //   },
+    //   // include: {
+    //   //   team: true,
+    //   // },
+    // })
+
+    console.log("DATA")
+    console.log(data)
     return Response.json(data.team, { status: 200 })
   } catch (err) {
     console.error(err)

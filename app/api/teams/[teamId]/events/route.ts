@@ -36,3 +36,33 @@ export const GET = async (
     return Response.json({ error: err }, { status: 500 })
   }
 }
+
+export const POST = async (
+  req: Request,
+  { params }: { params: Promise<{ teamId: string }> }
+) => {
+  try {
+    const body = await req.json()
+    const session = await auth()
+    const teamId = (await params).teamId
+
+    if (!session?.user.id) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
+    // TODO - implement check for authorization
+    console.log(body)
+    await prisma.event.create({
+      data: {
+        name: body.name,
+        description: body.description,
+        start: body.start,
+        end: body.end,
+        organiserId: session?.user.id,
+        teamId,
+      },
+    })
+  } catch (err) {
+    console.error(err)
+  }
+}

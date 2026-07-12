@@ -23,6 +23,9 @@ const EventsList = () => {
   useEffect(() => {
     const getEventsForTeam = async () => {
       try {
+        console.log(
+          "--------------------------------------------------------------------------------------------"
+        )
         const res = await axios.get(`/api/teams/${teamId}/events`)
         if (res.status === 200) {
           setEvents(res.data)

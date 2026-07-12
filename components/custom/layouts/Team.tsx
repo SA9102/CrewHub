@@ -32,12 +32,16 @@ const Team = ({ session }: props) => {
   const pathname = usePathname().split("/")
   const pathnameLast = pathname[pathname.length - 1]
 
+  console.log("TEAM ID")
+  console.log(teamId)
+
   // if (session.user.role !== Role.OWNER && )
 
   useEffect(() => {
     const getTeamData = async () => {
       try {
-        const res = await axios.get(`/api/team/${teamId}`)
+        console.log("FETCHING")
+        const res = await axios.get(`/api/teams/${teamId}`)
         if (res.status === 200) {
           setTeam({ id: res.data.id, name: res.data.name })
         }
@@ -58,7 +62,7 @@ const Team = ({ session }: props) => {
           variant="ghost"
           size="xs"
           onClick={() =>
-            redirect(`/org/teams/${team.id}/chat`, RedirectType.replace)
+            redirect(`/org/teams/${teamId}/chat`, RedirectType.replace)
           }
         >
           Chat
@@ -68,7 +72,7 @@ const Team = ({ session }: props) => {
           variant="ghost"
           size="xs"
           onClick={() =>
-            redirect(`/org/teams/${team.id}/events`, RedirectType.replace)
+            redirect(`/org/teams/${teamId}/events`, RedirectType.replace)
           }
         >
           Events
@@ -78,7 +82,7 @@ const Team = ({ session }: props) => {
           variant="ghost"
           size="xs"
           onClick={() =>
-            redirect(`/org/teams/${team.id}/members`, RedirectType.replace)
+            redirect(`/org/teams/${teamId}/members`, RedirectType.replace)
           }
         >
           Members

@@ -28,6 +28,7 @@ const MembersList = () => {
 
   useEffect(() => {
     const getUsers = async () => {
+      console.log("FROM MEMBERS")
       try {
         const res = await axios.get(`/api/teams/${teamId}/users`)
         if (res.status === 200) {
