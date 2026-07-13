@@ -27,6 +27,11 @@ model User {
 
   teams  UsersOnTeams[]
   events Event[]
+
+  privateChatsAsUser1 PrivateChat[] @relation("PrivateChatUser1")
+  privateChatsAsUser2 PrivateChat[] @relation("PrivateChatUser2")
+
+  messages Message[]
 }
 
 model Organisation {
@@ -80,4 +85,25 @@ model Event {
   user        User   @relation(fields: [organiserId], references: [id])
   teamId      String
   team        Team   @relation(fields: [teamId], references: [id])
+}
+
+model PrivateChat {
+  id      String @id @default(uuid())
+  user1Id String
+  user2Id String
+  user1   User   @relation("PrivateChatUser1", fields: [user1Id], references: [id])
+  user2   User   @relation("PrivateChatUser2", fields: [user2Id], references: [id])
+
+  messages Message[]
+
+  @@unique([user1Id, user2Id])
+}
+
+model Message {
+  id      String      @id @default(uuid())
+  content String
+  sentBy  String
+  user    User        @relation(fields: [sentBy], references: [id])
+  chatId  String
+  chat    PrivateChat @relation(fields: [chatId], references: [id])
 }

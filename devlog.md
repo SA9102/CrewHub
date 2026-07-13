@@ -1,5 +1,11 @@
 ### 12th July 2026
 
+- Added two new models: PrivateChat and Message
+
+---
+
+### 12th July 2026
+
 - Can create an event. An event currently holds a name, description, start datetime and end datetime.
 
 ---
