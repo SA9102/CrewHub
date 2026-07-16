@@ -7,16 +7,15 @@ export const proxy = auth((req) => {
     const newUrl = new URL("/auth/signin", req.nextUrl.origin)
     return Response.redirect(newUrl)
   }
-
   // If authenticated but not owner
   // -- FIXME --
-  if (
-    req.nextUrl.pathname.includes("users") &&
-    req.auth?.user.role !== Role.OWNER
-  ) {
-    const newUrl = new URL("/auth/signin", req.nextUrl.origin)
-    return Response.redirect(newUrl)
-  }
+  // if (
+  //   req.nextUrl.pathname.includes("users") &&
+  //   req.auth?.user.role !== Role.OWNER
+  // ) {
+  //   const newUrl = new URL("/auth/signin", req.nextUrl.origin)
+  //   return Response.redirect(newUrl)
+  // }
 })
 
 export const config = {

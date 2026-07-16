@@ -1,4 +1,10 @@
-### 12th July 2026
+### 16th July 2026
+
+- Minor updates
+
+---
+
+### 13th July 2026
 
 - Added two new models: PrivateChat and Message
 

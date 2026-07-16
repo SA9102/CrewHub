@@ -46,7 +46,7 @@ Each user belongs to at least one organisation.
 
 - [ ] Can manage users within the organisation
 - [ ] Can create and manage teams
-- [ ] Can create and edit events
+- [ ] Can create, edit and delete events
 - [ ] Can manage invitations
 - [ ] Cannot delete the organisation or transfer ownership
 
